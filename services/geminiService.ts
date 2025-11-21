@@ -1,11 +1,9 @@
 
+
 import { GoogleGenAI, Modality, Chat, GenerateContentResponse, Part, LiveServerMessage } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-    console.error("API_KEY environment variable not set");
-}
+// API Key - يتم استخدام المفتاح من المتغيرات البيئية أو المفتاح المدمج
+const API_KEY = process.env.API_KEY || process.env.GEMINI_API_KEY || 'AIzaSyDDvt-UICvGjp79eTJxz-3F08gLm0g6X9k';
 
 let ai: any;
 try {
@@ -17,6 +15,7 @@ try {
 } catch (error) {
     console.error("Failed to initialize GoogleGenAI:", error);
 }
+
 
 export { Chat };
 
