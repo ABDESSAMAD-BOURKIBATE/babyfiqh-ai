@@ -1,0 +1,23 @@
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
+}
+
+console.log("Starting app...");
+try {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+  console.log("App mounted successfully");
+} catch (e) {
+  console.error("Failed to mount app:", e);
+  document.body.innerHTML = `<div style="color: white; padding: 20px;"><h1>App Crashed</h1><pre>${e}</pre></div>`;
+}
