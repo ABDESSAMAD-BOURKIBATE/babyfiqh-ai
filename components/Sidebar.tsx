@@ -119,7 +119,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <div className={`p-5 flex items-center justify-between border-b ${theme.border}`}>
                     <div className="flex items-center gap-3">
                         <div className={`p-2 rounded-xl shadow-sm ${theme.logoBg}`}>
-                            <img src="/images/babyfiqh-ai.png" alt="Logo" className="w-7 h-7 object-contain" />
+                            <img src={import.meta.env.BASE_URL + 'images/babyfiqh-ai.png'} alt="Logo" className="w-7 h-7 object-contain" />
                         </div>
                         <span className={`font-bold text-lg font-cairo tracking-wide ${theme.textPrimary}`}>
                             Babyfiqh AI
@@ -150,7 +150,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                         : `bg-transparent ${theme.border} ${theme.textSecondary} hover:bg-emerald-500/10`
                                     }`}
                             >
-                                <img src="/images/limanour.png" alt="Grandpa Limanour" className="w-10 h-10 object-contain drop-shadow-md" />
+                                <img src={import.meta.env.BASE_URL + 'images/limanour.png'} alt="Grandpa Limanour" className="w-10 h-10 object-contain drop-shadow-md" />
                                 <span className="text-xs font-bold">{translations[currentLang].characters.limanour.name}</span>
                             </button>
 
@@ -162,7 +162,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                         : `bg-transparent ${theme.border} ${theme.textSecondary} hover:bg-pink-500/10`
                                     }`}
                             >
-                                <img src="/images/amanisa.png" alt="Grandma Amanisa" className="w-10 h-10 object-contain drop-shadow-md" />
+                                <img src={import.meta.env.BASE_URL + 'images/amanisa.png'} alt="Grandma Amanisa" className="w-10 h-10 object-contain drop-shadow-md" />
                                 <span className="text-xs font-bold">{translations[currentLang].characters.amanissa.name}</span>
                             </button>
                         </div>

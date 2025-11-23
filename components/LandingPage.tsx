@@ -126,7 +126,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
                     <div className="relative w-24 h-24 mb-6 group cursor-default">
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
                         <div className="relative w-full h-full bg-[#0f172a]/90 backdrop-blur-xl rounded-3xl border border-amber-500/20 flex items-center justify-center shadow-2xl ring-1 ring-white/5">
-                            <img src="/images/babyfiqh-ai.png" alt="BabyFiqh AI Logo" className="w-20 h-20 drop-shadow-lg object-contain" />
+                            <img src={import.meta.env.BASE_URL + 'images/babyfiqh-ai.png'} alt="BabyFiqh AI Logo" className="w-20 h-20 drop-shadow-lg object-contain" />
                         </div>
                     </div>
 

@@ -144,7 +144,7 @@ export const ChildAuthModal: React.FC<ChildAuthModalProps> = ({ onSuccess, onCan
                                 ${child.gender === 'girl' ? 'bg-pink-500/20' : 'bg-blue-500/20'}
                             `}>
                                 <img 
-                                    src={child.gender === 'girl' ? "/images/girl_avatar.png" : "/images/boy_avatar.png"} 
+                                    src={child.gender === 'girl' ? import.meta.env.BASE_URL + 'images/girl_avatar.png' : import.meta.env.BASE_URL + 'images/boy_avatar.png'} 
                                     alt={child.name}
                                     className="w-full h-full object-cover"
                                 />
@@ -173,8 +173,8 @@ export const ChildAuthModal: React.FC<ChildAuthModalProps> = ({ onSuccess, onCan
       <div className="bg-[#1e293b] border border-white/10 rounded-3xl p-8 w-full max-w-sm shadow-2xl animate-fade-in relative">
         
         <div className="flex flex-col items-center mb-6">
-            <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-4 shadow-lg border-2 border-white/10 overflow-hidden">
-                <img src="/images/boy_avatar.png" alt="Child Avatar" className="w-full h-full object-cover" />
+                <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-4 shadow-lg border-2 border-white/10 overflow-hidden">
+                <img src={import.meta.env.BASE_URL + 'images/boy_avatar.png'} alt="Child Avatar" className="w-full h-full object-cover" />
             </div>
             <h2 className="text-xl font-bold text-white mb-1">{t.title}</h2>
         </div>

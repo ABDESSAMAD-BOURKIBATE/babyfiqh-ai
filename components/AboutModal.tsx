@@ -39,7 +39,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ onClose, currentLang }) 
         <div className="w-full border-t border-amber-500/30 my-2"></div>
 
         <div className="flex flex-col md:flex-row items-center gap-6 w-full text-right">
-          <img src="/images/about_image.png" alt="About Project" className="w-32 h-32 rounded-full object-cover border-4 border-amber-500 flex-shrink-0 shadow-lg" />
+          <img src={import.meta.env.BASE_URL + 'images/about_image.png'} alt="About Project" className="w-32 h-32 rounded-full object-cover border-4 border-amber-500 flex-shrink-0 shadow-lg" />
           <div className={`flex flex-col ${dir === 'rtl' ? 'items-start text-right' : 'items-start text-left'} w-full`}>
             <h3 className="text-xl font-bold text-amber-400 font-cairo">{t.founderTitle}</h3>
             <p className="text-gray-300 leading-relaxed mt-2 text-sm md:text-base">

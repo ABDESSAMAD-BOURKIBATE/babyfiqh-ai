@@ -89,9 +89,9 @@ export const ChatDisplay: React.FC<ChatDisplayProps> = ({
       <div className="flex-grow overflow-y-auto p-4 md:p-6 space-y-6 relative z-10 scroll-smooth custom-scrollbar">
         {messages.length === 0 && (
           <div className="h-full flex flex-col items-center justify-center text-center opacity-60 mt-10">
-            <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 overflow-hidden border-4 border-white/20 shadow-2xl">
+              <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 overflow-hidden border-4 border-white/20 shadow-2xl">
               <img
-                src={characterId === 'limanour' ? "/images/limanour.png" : "/images/amanisa.png"}
+                src={characterId === 'limanour' ? import.meta.env.BASE_URL + 'images/limanour.png' : import.meta.env.BASE_URL + 'images/amanisa.png'}
                 alt={characterName}
                 className="w-full h-full object-cover"
               />
@@ -106,7 +106,7 @@ export const ChatDisplay: React.FC<ChatDisplayProps> = ({
             {msg.role === 'model' && (
               <div className={`w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 shadow-lg border-2 border-white/20 self-end mb-2 overflow-hidden`}>
                 <img
-                  src={characterId === 'limanour' ? "/images/limanour.png" : "/images/amanisa.png"}
+                  src={characterId === 'limanour' ? import.meta.env.BASE_URL + 'images/limanour.png' : import.meta.env.BASE_URL + 'images/amanisa.png'}
                   alt={characterName}
                   className="w-full h-full object-cover"
                 />
@@ -154,7 +154,7 @@ export const ChatDisplay: React.FC<ChatDisplayProps> = ({
           <div className="flex justify-start gap-4">
             <div className={`w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shadow-lg overflow-hidden border-2 border-white/20`}>
               <img
-                src={characterId === 'limanour' ? "/images/limanour.png" : "/images/amanisa.png"}
+                src={characterId === 'limanour' ? import.meta.env.BASE_URL + 'images/limanour.png' : import.meta.env.BASE_URL + 'images/amanisa.png'}
                 alt={characterName}
                 className="w-full h-full object-cover"
               />

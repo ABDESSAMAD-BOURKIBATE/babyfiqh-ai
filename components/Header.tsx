@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onStartLive, isSide
 
           {/* Mobile Title (Sidebar hides logo on mobile usually, but let's keep header clean) */}
           <div className="md:hidden flex items-center gap-2">
-            <img src="/images/babyfiqh-ai.png" alt="Logo" className="w-8 h-8 object-contain" />
+            <img src={import.meta.env.BASE_URL + 'images/babyfiqh-ai.png'} alt="Logo" className="w-8 h-8 object-contain" />
             <h1 className="text-lg font-bold text-white tracking-wide drop-shadow-md font-cairo">
               Babyfiqh AI
             </h1>
