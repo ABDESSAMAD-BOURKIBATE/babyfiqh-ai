@@ -1,0 +1,23 @@
+{
+  "name": "Babyfiqh AI | عالم الصغير",
+  "short_name": "Babyfiqh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "مشروع تعليمي ثوري يربّي الطفل المسلم رقميًا على تمييز الحلال والحرام، فهم الصلاة، أركان الإسلام، فقه المعاملات، الحديث، قصص الأنبياء والعقيدة.",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/vite.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
