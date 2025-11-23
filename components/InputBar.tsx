@@ -137,7 +137,7 @@ export const InputBar: React.FC<InputBarProps> = ({ onSend, disabled, currentLan
 
   // Standard UI
   return (
-    <div className="bg-white/5 backdrop-blur-xl border-t border-white/10 p-4 md:p-6">
+    <div className="bg-white/5 backdrop-blur-xl border-t border-white/10 p-2 md:p-6">
       {files.length > 0 && (
         <div className="mb-4 p-3 bg-white/5 rounded-xl flex gap-3 overflow-x-auto custom-scrollbar border border-white/10">
           {files.map((inputFile, index) => (
@@ -180,8 +180,7 @@ export const InputBar: React.FC<InputBarProps> = ({ onSend, disabled, currentLan
                 placeholder={isRecording ? t.recording : t.inputPlaceholder}
                 rows={1}
                 disabled={disabled}
-                className="w-full bg-white/10 text-white placeholder-emerald-200/50 rounded-full py-3 px-6 resize-none focus:ring-2 focus:ring-amber-400 focus:outline-none border border-white/10 disabled:opacity-50 transition-all"
-                style={{minHeight: '50px'}}
+              className="w-full bg-white/10 text-white placeholder-emerald-200/50 rounded-full py-2 px-4 md:py-3 md:px-6 resize-none focus:ring-2 focus:ring-amber-400 focus:outline-none border border-white/10 disabled:opacity-50 transition-all md:min-h-[50px] min-h-[38px]"
             />
         </div>
         
