@@ -35,6 +35,7 @@ export const InputBar: React.FC<InputBarProps> = ({ onSend, disabled, currentLan
   const streamRef = useRef<MediaStream | null>(null);
 
   const t = translations[currentLang].ui;
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleSend = () => {
     if (disabled || (text.trim() === '' && files.length === 0)) return;
@@ -174,6 +175,15 @@ export const InputBar: React.FC<InputBarProps> = ({ onSend, disabled, currentLan
 
         <div className="flex-grow relative">
             <textarea
+                    ref={textareaRef}
+                    onFocus={() => {
+                      // Small delay to wait for virtual keyboard to open, then scroll input into view
+                      setTimeout(() => {
+                        try {
+                          textareaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } catch (e) {}
+                      }, 300);
+                    }}
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
