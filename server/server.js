@@ -3,6 +3,7 @@ dotenv.config({ path: './.env.local' });
 
 import express from 'express';
 import { createServer } from 'http';
+import path from 'path';
 import { WebSocketServer } from 'ws';
 import { GoogleGenAI, Modality } from '@google/genai';
 
@@ -15,7 +16,16 @@ console.log('Port:', PORT);
 
 
 const app = express();
-app.get('/', (req, res) => res.send('Live proxy running'));
+
+// Serve built frontend from /dist when present
+const distPath = path.resolve(process.cwd(), 'dist');
+if (process.env.SERVE_STATIC !== 'false') {
+  app.use(express.static(distPath));
+  // SPA fallback
+  app.get(/.*/, (req, res) => res.sendFile(path.join(distPath, 'index.html')));
+} else {
+  app.get('/', (req, res) => res.send('Live proxy running'));
+}
 
 const server = createServer(app);
 
