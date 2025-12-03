@@ -1,0 +1,13 @@
+<svg width="332" height="100" viewBox="0 0 332 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Forqan Academy Logo</title>
+  <desc id="desc">Stylized open book with Arabic title for Forqan Academy for Islamic Culture</desc>
+  <rect width="332" height="100" rx="16" fill="#fff" fill-opacity="0" />
+  <g transform="translate(32 10)">
+    <path d="M60 10c18 9 36 9 54 0l18 32c-24 7-48 7-72 0z" fill="#f7a435" />
+    <path d="M60 10c-18 9-36 9-54 0L-12 42c24 7 48 7 72 0z" fill="#0aa468" />
+    <circle cx="60" cy="34" r="6" fill="#1d202f" />
+    <path d="M54 26c4 3 8 3 12 0l10 16c-7 3-25 3-32 0z" fill="#fff5e6" opacity="0.75" />
+  </g>
+  <text x="165" y="48" font-family="'Cairo', 'Tajawal', 'Amiri', 'Arial', sans-serif" font-size="28" fill="#f7a435" text-anchor="start">أكاديمية الفرقان</text>
+  <text x="165" y="78" font-family="'Cairo', 'Tajawal', 'Amiri', 'Arial', sans-serif" font-size="22" fill="#0aa468" text-anchor="start">للثقافة الإسلامية</text>
+</svg>
