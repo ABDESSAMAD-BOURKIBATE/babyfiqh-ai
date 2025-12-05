@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">معهد الإمام النووي - شعار</title>
+  <desc id="desc">شعار دائري بلون ذهبي للنواوي مع نص عربي داخلي</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#b89246" />
+      <stop offset="1" stop-color="#9a7a3a" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="transparent" />
+  <g transform="translate(160 160)">
+    <circle r="150" fill="url(#g1)" stroke="#7d6430" stroke-width="8" />
+    <g transform="translate(0 -10)">
+      <text x="0" y="-38" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial, sans-serif" font-size="20" fill="#ffffff">معهد</text>
+      <text x="0" y="-12" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">الإمام</text>
+      <text x="0" y="14" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial, sans-serif" font-size="46" font-weight="800" fill="#ffffff">النووي</text>
+      <text x="0" y="48" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial, sans-serif" font-size="16" fill="#ffffff">للتفقه الشافعي</text>
+    </g>
+  </g>
+</svg>

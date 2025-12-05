@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200" role="img" aria-labelledby="title desc">
+  <title id="title">Imam Academy Logo</title>
+  <desc id="desc">Logo for Imam Academy (Arabic/English) simplified from attachment</desc>
+  <rect width="100%" height="100%" fill="transparent"/>
+  <g transform="translate(18 12)">
+    <g transform="translate(0 0) scale(1)">
+      <path d="M50 8 C70 -6 110 -6 130 8 L142 24 C122 12 88 12 68 24 Z" fill="#7ac943" opacity="0.98" />
+      <path d="M50 24 C70 10 110 10 130 24 L142 40 C122 28 88 28 68 40 Z" fill="#1f7a3b" opacity="0.98" />
+    </g>
+    <g transform="translate(180 18)">
+      <text x="0" y="22" font-family="'Cairo', 'Tajawal', Arial, sans-serif" font-size="22" fill="#2b7a35">أكاديمية الأئمة والخطباء</text>
+      <text x="0" y="48" font-family="Inter, Arial, sans-serif" font-size="12" fill="#6b7280">Imam Academy</text>
+    </g>
+  </g>
+</svg>

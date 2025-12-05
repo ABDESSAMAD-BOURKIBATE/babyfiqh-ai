@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80" role="img" aria-labelledby="title desc">
+  <title id="title">Zad Academy Logo</title>
+  <desc id="desc">Zad Academy horizontal logo with Arabic and English text</desc>
+  <rect width="100%" height="100%" fill="transparent"/>
+  <g transform="translate(8 8)">
+    <g transform="translate(0 0)">
+      <rect x="0" y="4" width="64" height="56" rx="8" fill="#b6894a" />
+      <path d="M8 12 L56 12 L56 44 L8 44 Z" fill="#ffffff" opacity="0.08"/>
+      <path d="M20 16 L32 8 L44 16" fill="#ffd76b" opacity="0.95"/>
+    </g>
+    <g transform="translate(84 10)">
+      <text x="0" y="18" font-family="'Cairo', 'Tajawal', Arial, sans-serif" font-size="20" fill="#b6894a">برنامج أكاديمية زاد</text>
+      <text x="0" y="44" font-family="Inter, Arial, sans-serif" font-size="12" fill="#6b7280">ZAD ACADEMY</text>
+    </g>
+  </g>
+</svg>
