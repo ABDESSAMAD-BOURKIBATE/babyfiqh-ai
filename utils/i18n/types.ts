@@ -3,13 +3,13 @@ export type Language = 'ar' | 'en' | 'fr' | 'es' | 'zgh';
 export type CharacterId = 'limanour' | 'amanissa';
 
 export interface CharacterProfile {
-  name: string;
-  label: string;
-  description: string;
-  voiceName: string;
-  systemInstruction: string;
-  typingText: string;
-  thinkingText: string;
+    name: string;
+    label: string;
+    description: string;
+    voiceName: string;
+    systemInstruction: string;
+    typingText: string;
+    thinkingText: string;
 }
 
 export interface UIStructure {
@@ -19,8 +19,10 @@ export interface UIStructure {
     about: string;
     library: string;
     furqan: string;
-    andalusLibrary: string; 
-    gamesLibrary: string; 
+    andalusLibrary: string;
+    gamesLibrary: string;
+    languageLearning: string;
+    videosLibrary: string;
     callOfMercy: string;
     prayerTimes: string;
     fajr: string;
@@ -41,7 +43,7 @@ export interface UIStructure {
     prophets: string;
     companions: string;
     sahabiyat: string;
-    tabiin: string; 
+    tabiin: string;
     atbaTabiin: string;
     scholars: string;
     goldenAges: string;
@@ -115,6 +117,7 @@ export interface UIStructure {
     searchBooks: string;
     readBook: string;
     byAuthor: string;
+    catReligious: string;
     catStories: string;
     catAnimals: string;
     catScience: string;
@@ -137,14 +140,61 @@ export interface UIStructure {
     selectPartsGame: string;
     rotatePhone: string;
     searchResults: string;
+    fullscreen: string;
+    exitFullscreen: string;
+    safeZoneForChildren: string;
+    searchVideo: string;
+    noVideosInCategory: string;
+    noVideosMatch: string;
+    currentLevel: string;
+    questionsAnswered: string;
+    timesUp: string;
+    wrongAnswer: string;
+    correctAnswer: string;
+    nextQuestion: string;
+    finishLevel: string;
+    gameOverTitle: string;
+    gameOverMessage: string;
+    retry: string;
+    mainMenu: string;
+    wellDone: string;
+    tryAgain: string;
+    correctAnswers: string;
+    easy: string;
+    medium: string;
+    hard: string;
+    arabicKnightsQuiz: string;
+    arabicKnights15Levels: string;
+    levels: string;
+    questions: string;
+    randomQuestions: string;
+    starsSystem: string;
+    strategicMind: string;
+    strategicMindDesc: string;
+    activityLog: string;
+    noRecentActivity: string;
+    aiInsights: string;
+    moreActivityNeeded: string;
+    recoverPassword: string;
+    years: string;
+    liveTalk: string;
+    speaking: string;
+    listening: string;
+    connectionError: string;
+    reload: string;
+    mode: string;
+    theme: string;
+    language: string;
+    educationalPortals: string;
+    exploreWorldKnowledge: string;
     games: {
         fursanAlDhad: string;
         fursanDesc: string;
-        memoryGame: string; 
-        memoryDesc: string; 
-        mosqueBuilder: string; 
+        memoryGame: string;
+        memoryDesc: string;
+        mosqueBuilder: string;
         mosqueBuilderDesc: string;
-        quranMemorization: string; 
+        quranMemorization: string;
         quranMemorizationDesc: string;
         hadithGame: string;
         hadithGameDesc: string;
@@ -171,9 +221,9 @@ export interface UIStructure {
         levelUp: string;
         gameOver: string;
         startLevel: string;
-        moves: string; 
-        bestScore: string; 
-        parts: { 
+        moves: string;
+        bestScore: string;
+        parts: {
             dome: string;
             minaret: string;
             wall: string;
@@ -239,6 +289,7 @@ export interface UIStructure {
         forgotPass: string;
         cancel: string;
         selectLang: string;
+        projectGuide?: string;
     };
     auth: {
         loginTitle: string;
@@ -317,7 +368,7 @@ export interface UIStructure {
 }
 
 export interface Translation {
-  direction: 'rtl' | 'ltr';
-  ui: UIStructure;
-  characters: Record<CharacterId, CharacterProfile>;
+    direction: 'rtl' | 'ltr';
+    ui: UIStructure;
+    characters: Record<CharacterId, CharacterProfile>;
 }

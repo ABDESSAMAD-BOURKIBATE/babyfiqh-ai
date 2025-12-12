@@ -17,7 +17,7 @@ const HeartIcon: React.FC<{ filled: boolean }> = ({ filled }) => (
 );
 
 const ClockIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
 );
 
 export const FursanAlDhadGame: React.FC<FursanAlDhadGameProps> = ({ onBack, currentLang, dir }) => {
@@ -162,15 +162,15 @@ export const FursanAlDhadGame: React.FC<FursanAlDhadGameProps> = ({ onBack, curr
                     <p className="text-white/60 text-sm mb-1">{t.score}</p>
                     <p className="text-4xl font-mono font-bold text-white">{score}</p>
                 </div>
-                
+
                 <div className="flex gap-4 w-full max-w-sm">
-                    <button 
+                    <button
                         onClick={() => setGameState('level_select')}
                         className="flex-1 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors font-bold"
                     >
                         {translations[currentLang].ui.back}
                     </button>
-                    <button 
+                    <button
                         onClick={() => activeLevelIndex !== null && startLevel(activeLevelIndex)}
                         className={`flex-1 px-6 py-4 rounded-xl font-bold text-white shadow-lg transition-transform hover:scale-105
                             ${isWin ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-indigo-600 hover:bg-indigo-500'}`}
@@ -219,7 +219,7 @@ export const FursanAlDhadGame: React.FC<FursanAlDhadGameProps> = ({ onBack, curr
 
             {/* Progress Bar */}
             <div className="w-full h-1.5 bg-white/5 rounded-full mb-8 overflow-hidden">
-                <div 
+                <div
                     className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500 ease-out"
                     style={{ width: `${((currentQIndex) / currentLevel.questions.length) * 100}%` }}
                 ></div>
@@ -234,7 +234,7 @@ export const FursanAlDhadGame: React.FC<FursanAlDhadGameProps> = ({ onBack, curr
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {q.options.map((opt, idx) => {
                         let btnClass = "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"; // Default
-                        
+
                         if (selectedOption !== null) {
                             if (idx === q.correctIndex) {
                                 btnClass = "bg-emerald-600 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.4)] ring-2 ring-emerald-400 scale-[1.02]";
@@ -267,7 +267,7 @@ export const FursanAlDhadGame: React.FC<FursanAlDhadGameProps> = ({ onBack, curr
                 {selectedOption !== null && (
                     <div className="animate-fade-in-up w-full max-w-md">
                         {isCorrect ? (
-                            <button 
+                            <button
                                 onClick={handleNext}
                                 className="w-full py-4 bg-white text-indigo-900 font-bold rounded-xl hover:bg-indigo-50 transition-colors shadow-lg text-lg"
                             >
@@ -278,7 +278,7 @@ export const FursanAlDhadGame: React.FC<FursanAlDhadGameProps> = ({ onBack, curr
                                 {lives > 0 ? (
                                     <p className="text-red-400 font-bold mb-2 animate-bounce">{t.wrong}</p>
                                 ) : (
-                                    <button 
+                                    <button
                                         onClick={() => setGameState('game_over')}
                                         className="w-full py-4 bg-red-600 text-white font-bold rounded-xl hover:bg-red-500 transition-colors shadow-lg"
                                     >

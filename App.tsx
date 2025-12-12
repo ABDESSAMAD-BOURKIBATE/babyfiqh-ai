@@ -17,7 +17,7 @@ import { LibraryItem } from './utils/libraryData';
 import { LandingPage } from './components/LandingPage';
 import { ParentDashboard } from './components/ParentDashboard';
 import { ChildAuthModal } from './components/ChildAuthModal';
-import { updateChildStats } from './utils/userData';
+import { updateChildStats, logChildActivity } from './utils/userData';
 import { analyzeEmotion } from './utils/emotionAnalysis';
 import { InstallPrompt } from './components/InstallPrompt';
 import { FurqanModal } from './components/FurqanModal';
@@ -25,6 +25,9 @@ import { AdhanModal } from './components/AdhanModal';
 import { AndalusModal } from './components/AndalusModal';
 import { GlobalPlayer } from './components/GlobalPlayer';
 import { GamesModal } from './components/GamesModal';
+import { VideosModal } from './components/VideosModal';
+import { LanguageLearningModal } from './components/languages/LanguageLearningModal';
+import { EducationalPortalsModal } from './components/EducationalPortalsModal';
 
 export type ConversationState = 'idle' | 'loading' | 'error';
 
@@ -45,25 +48,25 @@ type AppMode = 'parent' | 'child' | null;
 
 // Media State for Global Player
 export interface MediaState {
-    url: string;
-    title: string;
-    subtitle: string;
-    isPlaying: boolean;
+  url: string;
+  title: string;
+  subtitle: string;
+  isPlaying: boolean;
 }
 
 const App: React.FC = () => {
   const [appMode, setAppMode] = useState<AppMode>(() => {
-      return typeof window !== 'undefined' ? window.localStorage.getItem('appMode') as AppMode : null;
+    return typeof window !== 'undefined' ? window.localStorage.getItem('appMode') as AppMode : null;
   });
-  
+
   const [parentInitialView, setParentInitialView] = useState<'login' | 'register' | 'forgot'>('login');
-  
+
   const [currentChildId, setCurrentChildId] = useState<string | null>(() => {
-      return typeof window !== 'undefined' ? window.localStorage.getItem('currentChildId') : null;
+    return typeof window !== 'undefined' ? window.localStorage.getItem('currentChildId') : null;
   });
 
   const [currentLang, setCurrentLang] = useState<Language>('ar');
-  const [currentCharacterId, setCurrentCharacterId] = useState<CharacterId>('limanour'); 
+  const [currentCharacterId, setCurrentCharacterId] = useState<CharacterId>('limanour');
   const [messages, setMessages] = useState<Message[]>([]);
   const [conversationState, setConversationState] = useState<ConversationState>('idle');
   const [error, setError] = useState<string | null>(null);
@@ -73,11 +76,14 @@ const App: React.FC = () => {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isLibraryModalOpen, setIsLibraryModalOpen] = useState(false);
   const [isFurqanModalOpen, setIsFurqanModalOpen] = useState(false);
-  const [isAdhanModalOpen, setIsAdhanModalOpen] = useState(false); 
+  const [isAdhanModalOpen, setIsAdhanModalOpen] = useState(false);
   const [isAndalusModalOpen, setIsAndalusModalOpen] = useState(false);
-  const [isGamesModalOpen, setIsGamesModalOpen] = useState(false); 
+  const [isGamesModalOpen, setIsGamesModalOpen] = useState(false);
+  const [isVideosModalOpen, setIsVideosModalOpen] = useState(false);
+  const [isLanguageLearningModalOpen, setIsLanguageLearningModalOpen] = useState(false);
+  const [isEducationalPortalsModalOpen, setIsEducationalPortalsModalOpen] = useState(false);
   const [isLiveMode, setIsLiveMode] = useState(false);
-  
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isAudioMode, setIsAudioMode] = useState(false);
@@ -94,18 +100,18 @@ const App: React.FC = () => {
     const config = translations[currentLang];
     document.documentElement.dir = config.direction;
     document.documentElement.lang = currentLang;
-    
+
     const systemInstruction = config.characters[currentCharacterId].systemInstruction;
     chatRef.current = createLimanourChat(systemInstruction);
   }, [currentLang, currentCharacterId]);
 
   useEffect(() => {
     const handleResize = () => {
-        if (window.innerWidth < 768) {
-            setIsSidebarOpen(false);
-        } else {
-            setIsSidebarOpen(true);
-        }
+      if (window.innerWidth < 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -113,36 +119,36 @@ const App: React.FC = () => {
   }, []);
 
   const handleModeSelect = (mode: 'parent' | 'child', subView?: 'login' | 'register' | 'forgot') => {
-      if (mode === 'parent') {
-          if (subView) setParentInitialView(subView);
-          setAppMode('parent');
-      } else {
-          setShowChildAuth(true);
-      }
+    if (mode === 'parent') {
+      if (subView) setParentInitialView(subView);
+      setAppMode('parent');
+    } else {
+      setShowChildAuth(true);
+    }
   };
 
   const handleChildLoginSuccess = (childId: string) => {
-      localStorage.setItem('appMode', 'child');
-      localStorage.setItem('currentChildId', childId);
-      setAppMode('child');
-      setCurrentChildId(childId);
-      setShowChildAuth(false);
+    localStorage.setItem('appMode', 'child');
+    localStorage.setItem('currentChildId', childId);
+    setAppMode('child');
+    setCurrentChildId(childId);
+    setShowChildAuth(false);
   };
 
   const handleChildLogout = () => {
-      localStorage.removeItem('appMode');
-      localStorage.removeItem('currentChildId');
-      setAppMode(null);
-      setCurrentChildId(null);
-      setMessages([]);
-      setMediaState(null); // Stop media on logout
+    localStorage.removeItem('appMode');
+    localStorage.removeItem('currentChildId');
+    setAppMode(null);
+    setCurrentChildId(null);
+    setMessages([]);
+    setMediaState(null); // Stop media on logout
   };
 
   const handleClearData = () => {
-      if (window.confirm('هل أنت متأكد من رغبتك في مسح جميع البيانات والبدء من جديد؟')) {
-          localStorage.clear();
-          window.location.reload();
-      }
+    if (window.confirm('هل أنت متأكد من رغبتك في مسح جميع البيانات والبدء من جديد؟')) {
+      localStorage.clear();
+      window.location.reload();
+    }
   };
 
   const handleAcceptCovenant = () => {
@@ -155,33 +161,33 @@ const App: React.FC = () => {
   const handlePlayAudio = useCallback(async (text: string) => {
     if (!text) return;
     try {
-        // Stop Global Media Player if TTS starts
-        if (mediaState?.isPlaying) {
-            setMediaState(prev => prev ? { ...prev, isPlaying: false } : null);
-        }
-        stopAllAudio();
-        const { generateSpeech } = await import('./services/geminiService');
-        const voiceName = translations[currentLang].characters[currentCharacterId].voiceName;
-        const audioBase64 = await generateSpeech(text, voiceName);
-        playAudio(audioBase64);
+      // Stop Global Media Player if TTS starts
+      if (mediaState?.isPlaying) {
+        setMediaState(prev => prev ? { ...prev, isPlaying: false } : null);
+      }
+      stopAllAudio();
+      const { generateSpeech } = await import('./services/geminiService');
+      const voiceName = translations[currentLang].characters[currentCharacterId].voiceName;
+      const audioBase64 = await generateSpeech(text, voiceName);
+      playAudio(audioBase64);
     } catch (err) {
-        console.error("Failed to play audio:", err);
-        setError(translations[currentLang].ui.error);
+      console.error("Failed to play audio:", err);
+      setError(translations[currentLang].ui.error);
     }
   }, [currentLang, currentCharacterId, mediaState]);
 
   // --- Media Player Handlers ---
   const handlePlayMedia = (url: string, title: string, subtitle: string) => {
-      stopAllAudio(); // Stop TTS
-      setMediaState({ url, title, subtitle, isPlaying: true });
+    stopAllAudio(); // Stop TTS
+    setMediaState({ url, title, subtitle, isPlaying: true });
   };
 
   const handleCloseMedia = () => {
-      setMediaState(null);
+    setMediaState(null);
   };
 
   const handleMediaPlayPause = (isPlaying: boolean) => {
-      setMediaState(prev => prev ? { ...prev, isPlaying } : null);
+    setMediaState(prev => prev ? { ...prev, isPlaying } : null);
   };
 
 
@@ -191,15 +197,21 @@ const App: React.FC = () => {
 
     // Pause background audio when interacting with AI to avoid noise overlap
     if (mediaState?.isPlaying) {
-        setMediaState(prev => prev ? { ...prev, isPlaying: false } : null);
+      setMediaState(prev => prev ? { ...prev, isPlaying: false } : null);
     }
 
     setConversationState('loading');
     setError(null);
 
     if (currentChildId) {
-        const emotion = analyzeEmotion(text || '');
-        updateChildStats(currentChildId, text || 'Media Sent', emotion);
+      const emotion = analyzeEmotion(text || '');
+      updateChildStats(currentChildId, text || 'Media Sent', emotion);
+      logChildActivity(currentChildId, {
+        type: 'chat',
+        title: 'Chat Interaction',
+        details: text || 'Sent media/file',
+        topic: 'general'
+      });
     }
 
     const userParts: MessagePart[] = [];
@@ -208,68 +220,68 @@ const App: React.FC = () => {
     }
 
     try {
-       for (const file of files) {
-          const part = await fileToGenerativePart(file.file, file.type);
-          userParts.push({ inlineData: part });
-       }
+      for (const file of files) {
+        const part = await fileToGenerativePart(file.file, file.type);
+        userParts.push({ inlineData: part });
+      }
 
       const userMessage: Message = { role: 'user', parts: userParts };
       setMessages(prev => [...prev, userMessage]);
 
       if (isAudioMode) {
-          // @ts-ignore 
-          const result = await chatRef.current.sendMessage({ message: userParts });
-          let responseText = result.text;
-          
-          if (responseText) {
-              // CLEAN UP: Remove stage directions like (smiling) or [loudly] at the start
-              responseText = responseText.replace(/^[\(\[].*?[\)\]]\s*/s, '');
+        // @ts-ignore 
+        const result = await chatRef.current.sendMessage({ message: userParts });
+        let responseText = result.text;
 
-              const { generateSpeech } = await import('./services/geminiService');
-              const voiceName = translations[currentLang].characters[currentCharacterId].voiceName;
-              
-              const speechText = responseText.replace(/\*\*/g, '');
-              const audioBase64 = await generateSpeech(speechText, voiceName);
+        if (responseText) {
+          // CLEAN UP: Remove stage directions like (smiling) or [loudly] at the start
+          responseText = responseText.replace(/^[\(\[].*?[\)\]]\s*/s, '');
 
-              setMessages(prev => [...prev, { 
-                  role: 'model', 
-                  parts: [{ 
-                      inlineData: { 
-                          mimeType: 'audio/limanour-pcm', 
-                          data: audioBase64 
-                      } 
-                  }] 
-              }]);
-          }
+          const { generateSpeech } = await import('./services/geminiService');
+          const voiceName = translations[currentLang].characters[currentCharacterId].voiceName;
+
+          const speechText = responseText.replace(/\*\*/g, '');
+          const audioBase64 = await generateSpeech(speechText, voiceName);
+
+          setMessages(prev => [...prev, {
+            role: 'model',
+            parts: [{
+              inlineData: {
+                mimeType: 'audio/limanour-pcm',
+                data: audioBase64
+              }
+            }]
+          }]);
+        }
 
       } else {
-          const stream = await sendMessageStreamToLimanour(chatRef.current, userParts as any);
-          
-          let modelResponseText = '';
-          
-          setMessages(prev => [...prev, { role: 'model', parts: [{ text: '' }] }]);
+        const stream = await sendMessageStreamToLimanour(chatRef.current, userParts as any);
 
-          for await (const chunk of stream) {
-            const textChunk = chunk.text;
-            if(textChunk) {
-                modelResponseText += textChunk;
-                
-                // CLEAN UP: Remove stage directions at the start
-                let cleanedText = modelResponseText.replace(/^[\(\[].*?[\)\]]\s*/s, '');
-                cleanedText = cleanedText.replace(/\*\*/g, ''); // Also remove bold markers for display
+        let modelResponseText = '';
 
-                setMessages(prev => {
-                  const newMessages = [...prev];
-                  const lastMessage = newMessages[newMessages.length - 1];
-                  if (lastMessage && lastMessage.role === 'model') {
-                    lastMessage.parts[0].text = cleanedText;
-                  }
-                  return newMessages;
-                });
-            }
+        setMessages(prev => [...prev, { role: 'model', parts: [{ text: '' }] }]);
+
+        for await (const chunk of stream) {
+          const textChunk = chunk.text;
+          if (textChunk) {
+            modelResponseText += textChunk;
+
+            // CLEAN UP: Remove stage directions at the start
+            let cleanedText = modelResponseText.replace(/^[\(\[].*?[\)\]]\s*/s, '');
+            cleanedText = cleanedText.replace(/\*\*/g, ''); // Also remove bold markers for display
+
+            setMessages(prev => {
+              const newMessages = [...prev];
+              const lastMessage = newMessages[newMessages.length - 1];
+              if (lastMessage && lastMessage.role === 'model') {
+                lastMessage.parts[0].text = cleanedText;
+              }
+              return newMessages;
+            });
           }
+        }
       }
-      
+
     } catch (err) {
       console.error('Error sending message:', err);
       setError(err instanceof Error ? err.message : translations[currentLang].ui.error);
@@ -280,198 +292,217 @@ const App: React.FC = () => {
   }, [currentLang, isAudioMode, currentCharacterId, handlePlayAudio, currentChildId, mediaState]);
 
   const handleLibrarySelect = (item: LibraryItem) => {
-      setIsLibraryModalOpen(false);
-      const prompt = `${translations[currentLang].ui.tellStory} ${item.names[currentLang]}`;
-      handleSend(prompt, []);
+    setIsLibraryModalOpen(false);
+    const prompt = `${translations[currentLang].ui.tellStory} ${item.names[currentLang]}`;
+    handleSend(prompt, []);
   };
 
   if (!appMode) {
-      return (
-        <>
-            <LandingPage 
-                onSelectMode={handleModeSelect} 
-                onClearData={handleClearData}
-                currentLang={currentLang}
-                onLangChange={setCurrentLang}
-            />
-            <InstallPrompt currentLang={currentLang} />
-            {showChildAuth && (
-                <ChildAuthModal 
-                    onSuccess={handleChildLoginSuccess} 
-                    onCancel={() => setShowChildAuth(false)} 
-                    currentLang={currentLang}
-                />
-            )}
-        </>
-      );
+    return (
+      <>
+        <LandingPage
+          onSelectMode={handleModeSelect}
+          onClearData={handleClearData}
+          currentLang={currentLang}
+          onLangChange={setCurrentLang}
+        />
+        <InstallPrompt currentLang={currentLang} />
+        {showChildAuth && (
+          <ChildAuthModal
+            onSuccess={handleChildLoginSuccess}
+            onCancel={() => setShowChildAuth(false)}
+            currentLang={currentLang}
+          />
+        )}
+      </>
+    );
   }
 
   if (appMode === 'parent') {
-      return (
-          <>
-            <ParentDashboard 
-                initialView={parentInitialView}
-                onExit={() => setAppMode(null)}
-                onGoToChildMode={() => {
-                    setAppMode(null); 
-                    setTimeout(() => setShowChildAuth(true), 100);
-                }}
-                currentLang={currentLang}
-            />
-            <InstallPrompt currentLang={currentLang} />
-          </>
-      );
+    return (
+      <>
+        <ParentDashboard
+          initialView={parentInitialView}
+          onExit={() => setAppMode(null)}
+          onGoToChildMode={() => {
+            setAppMode(null);
+            setTimeout(() => setShowChildAuth(true), 100);
+          }}
+          currentLang={currentLang}
+        />
+        <InstallPrompt currentLang={currentLang} />
+      </>
+    );
   }
 
   if (appMode === 'child' && !covenantAccepted) {
     return <CovenantModal currentLang={currentLang} onAccept={handleAcceptCovenant} />;
   }
-  
+
   if (isLiveMode) {
     return (
-        <LiveSession 
-            currentLang={currentLang} 
-            characterId={currentCharacterId}
-            onExit={() => setIsLiveMode(false)} 
-        />
+      <LiveSession
+        currentLang={currentLang}
+        characterId={currentCharacterId}
+        onExit={() => setIsLiveMode(false)}
+      />
     );
   }
 
   return (
     <div className="relative h-screen w-screen overflow-hidden transition-all duration-700 ease-in-out">
-        
+
       <InstallPrompt currentLang={currentLang} />
-        
-      <div 
+
+      <div
         className={`absolute inset-0 w-full h-full -z-10 bg-size-400 animate-gradient-slow transition-colors duration-700
-            ${isDarkMode 
-                ? 'bg-gradient-to-br from-[#1e1b4b] via-[#312e81] to-[#0f172a]' 
-                : currentCharacterId === 'limanour'
-                    ? 'bg-gradient-to-br from-[#047857] via-[#0d9488] to-[#d97706]' 
-                    : 'bg-gradient-to-br from-[#be185d] via-[#db2777] to-[#fb923c]' 
-            }`}
+            ${isDarkMode
+            ? 'bg-gradient-to-br from-[#1e1b4b] via-[#312e81] to-[#0f172a]'
+            : currentCharacterId === 'limanour'
+              ? 'bg-gradient-to-br from-[#047857] via-[#0d9488] to-[#d97706]'
+              : 'bg-gradient-to-br from-[#be185d] via-[#db2777] to-[#fb923c]'
+          }`}
       >
         {isDarkMode && (
-            <div className="absolute inset-0 opacity-30" style={{backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '50px 50px'}}></div>
+          <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
         )}
       </div>
 
       <div className="flex h-full w-full glass-panel overflow-hidden">
-        
-        <Sidebar 
-            currentLang={currentLang}
-            onLangChange={setCurrentLang}
-            currentCharacterId={currentCharacterId}
-            onCharacterChange={setCurrentCharacterId}
-            onOpenAbout={() => setIsAboutModalOpen(true)}
-            isOpen={isSidebarOpen}
-            onClose={() => setIsSidebarOpen(false)}
-            isDarkMode={isDarkMode}
-            onToggleTheme={() => setIsDarkMode(!isDarkMode)}
-            isAudioMode={isAudioMode}
-            onToggleAudioMode={() => setIsAudioMode(!isAudioMode)}
-            onOpenLibrary={() => setIsLibraryModalOpen(true)}
-            onOpenFurqan={() => setIsFurqanModalOpen(true)}
-            onOpenAdhan={() => setIsAdhanModalOpen(true)} 
-            onOpenAndalus={() => setIsAndalusModalOpen(true)}
-            onOpenGames={() => setIsGamesModalOpen(true)} 
-            onLogout={handleChildLogout}
+
+        <Sidebar
+          currentLang={currentLang}
+          onLangChange={setCurrentLang}
+          currentCharacterId={currentCharacterId}
+          onCharacterChange={setCurrentCharacterId}
+          onOpenAbout={() => setIsAboutModalOpen(true)}
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+          isDarkMode={isDarkMode}
+          onToggleTheme={() => setIsDarkMode(!isDarkMode)}
+          isAudioMode={isAudioMode}
+          onToggleAudioMode={() => setIsAudioMode(!isAudioMode)}
+          onOpenLibrary={() => setIsLibraryModalOpen(true)}
+          onOpenFurqan={() => setIsFurqanModalOpen(true)}
+          onOpenAdhan={() => setIsAdhanModalOpen(true)}
+          onOpenAndalus={() => setIsAndalusModalOpen(true)}
+          onOpenGames={() => setIsGamesModalOpen(true)}
+          onOpenVideos={() => setIsVideosModalOpen(true)}
+          onOpenEducationalPortals={() => setIsEducationalPortalsModalOpen(true)}
+          onLogout={handleChildLogout}
         />
 
         <div className="flex-grow flex flex-col relative h-full overflow-hidden transition-all duration-300">
-            <Header 
+          <Header
+            currentLang={currentLang}
+            isSidebarOpen={isSidebarOpen}
+            onOpenSidebar={() => setIsSidebarOpen(true)}
+          />
+
+          <main className={`flex-grow p-0 md:p-4 flex flex-col items-center w-full overflow-hidden ${mediaState ? 'pb-20' : 'pb-0'}`}>
+            <div className="w-full h-full max-w-5xl flex flex-col bg-white/5 backdrop-blur-md rounded-none md:rounded-3xl border-0 md:border border-white/10 shadow-2xl overflow-hidden">
+              <ChatDisplay
                 currentLang={currentLang}
-                onStartLive={() => { 
-                    setMediaState(null); // Stop media before live
-                    setIsLiveMode(true); 
-                }}
-                isSidebarOpen={isSidebarOpen}
-                onOpenSidebar={() => setIsSidebarOpen(true)}
-            />
-            
-            <main className={`flex-grow p-2 md:p-4 flex flex-col items-center w-full overflow-hidden ${mediaState ? 'pb-20' : ''}`}>
-                <div className="w-full h-full max-w-5xl flex flex-col bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-                    <ChatDisplay
-                        currentLang={currentLang}
-                        characterId={currentCharacterId}
-                        messages={messages}
-                        isLoading={conversationState === 'loading'}
-                        error={error}
-                        onPlayAudio={handlePlayAudio}
-                        isAudioMode={isAudioMode}
-                        isDarkMode={isDarkMode}
-                    />
-                    <InputBar 
-                        currentLang={currentLang}
-                        onSend={handleSend} 
-                        disabled={conversationState === 'loading'}
-                        isAudioMode={isAudioMode}
-                    />
-                </div>
-            </main>
-            
-            <footer className="p-2 text-center text-white/40 text-[10px] flex-shrink-0 md:hidden">
-                {translations[currentLang].ui.rights}
-            </footer>
+                characterId={currentCharacterId}
+                messages={messages}
+                isLoading={conversationState === 'loading'}
+                error={error}
+                onPlayAudio={handlePlayAudio}
+                isAudioMode={isAudioMode}
+                isDarkMode={isDarkMode}
+              />
+              <InputBar
+                currentLang={currentLang}
+                onSend={handleSend}
+                disabled={conversationState === 'loading'}
+                isAudioMode={isAudioMode}
+              />
+            </div>
+          </main>
+
+          <footer className="text-center text-white/40 text-[10px] flex-shrink-0 md:hidden pb-1">
+            {translations[currentLang].ui.rights}
+          </footer>
         </div>
       </div>
-      
+
       {isAboutModalOpen && (
-        <AboutModal 
-            currentLang={currentLang}
-            onClose={() => setIsAboutModalOpen(false)} 
+        <AboutModal
+          currentLang={currentLang}
+          onClose={() => setIsAboutModalOpen(false)}
         />
       )}
 
       {isLibraryModalOpen && (
-          <LibraryModal
-            currentLang={currentLang}
-            onClose={() => setIsLibraryModalOpen(false)}
-            onSelect={handleLibrarySelect}
-          />
+        <LibraryModal
+          currentLang={currentLang}
+          onClose={() => setIsLibraryModalOpen(false)}
+          onSelect={handleLibrarySelect}
+        />
       )}
 
       {isFurqanModalOpen && (
-          <FurqanModal 
-            currentLang={currentLang}
-            onClose={() => setIsFurqanModalOpen(false)}
-            onPlayMedia={handlePlayMedia}
-            currentlyPlayingUrl={mediaState?.url}
-          />
+        <FurqanModal
+          currentLang={currentLang}
+          onClose={() => setIsFurqanModalOpen(false)}
+          onPlayMedia={handlePlayMedia}
+          currentlyPlayingUrl={mediaState?.url}
+        />
       )}
 
       {isAdhanModalOpen && (
-          <AdhanModal 
-            currentLang={currentLang} 
-            onClose={() => setIsAdhanModalOpen(false)} 
-            onPlayMedia={handlePlayMedia}
-          />
+        <AdhanModal
+          currentLang={currentLang}
+          onClose={() => setIsAdhanModalOpen(false)}
+          onPlayMedia={handlePlayMedia}
+        />
       )}
 
       {isAndalusModalOpen && (
-          <AndalusModal 
-            currentLang={currentLang} 
-            onClose={() => setIsAndalusModalOpen(false)} 
-          />
+        <AndalusModal
+          currentLang={currentLang}
+          onClose={() => setIsAndalusModalOpen(false)}
+        />
       )}
 
       {isGamesModalOpen && (
-          <GamesModal 
-            currentLang={currentLang}
-            onClose={() => setIsGamesModalOpen(false)}
-          />
+        <GamesModal
+          currentLang={currentLang}
+          onClose={() => setIsGamesModalOpen(false)}
+        />
+      )}
+
+      {isVideosModalOpen && (
+        <VideosModal
+          currentLang={currentLang}
+          onClose={() => setIsVideosModalOpen(false)}
+        />
+      )}
+
+      {isLanguageLearningModalOpen && (
+        <LanguageLearningModal
+          currentLang={currentLang}
+          onClose={() => setIsLanguageLearningModalOpen(false)}
+        />
+      )}
+
+      {isEducationalPortalsModalOpen && (
+        <EducationalPortalsModal
+          currentLang={currentLang}
+          onClose={() => setIsEducationalPortalsModalOpen(false)}
+        />
       )}
 
       {/* Global Persistent Player */}
       {mediaState && (
-          <GlobalPlayer 
-              url={mediaState.url}
-              title={mediaState.title}
-              subtitle={mediaState.subtitle}
-              isPlaying={mediaState.isPlaying}
-              onPlayPause={handleMediaPlayPause}
-              onClose={handleCloseMedia}
-          />
+        <GlobalPlayer
+          url={mediaState.url}
+          title={mediaState.title}
+          subtitle={mediaState.subtitle}
+          isPlaying={mediaState.isPlaying}
+          onPlayPause={handleMediaPlayPause}
+          onClose={handleCloseMedia}
+        />
       )}
 
       <style>{`

@@ -15,6 +15,8 @@ import { MosqueIcon } from './icons/MosqueIcon';
 import { ArchIcon } from './icons/ArchIcon';
 import { VideoIcon } from './icons/VideoIcon';
 import { GameIcon } from './icons/GameIcon';
+import { PortalIcon } from './icons/PortalIcon';
+
 
 interface SidebarProps {
     currentLang: Language;
@@ -33,6 +35,8 @@ interface SidebarProps {
     onOpenAdhan: () => void;
     onOpenAndalus: () => void;
     onOpenGames: () => void;
+    onOpenVideos: () => void;
+    onOpenEducationalPortals: () => void;
     onLogout: () => void;
 }
 
@@ -53,6 +57,12 @@ const GrandmaIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const FullScreenIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+    </svg>
+);
+
 export const Sidebar: React.FC<SidebarProps> = ({
     currentLang,
     onLangChange,
@@ -70,6 +80,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     onOpenAdhan,
     onOpenAndalus,
     onOpenGames,
+    onOpenVideos,
+    onOpenEducationalPortals,
     onLogout
 }) => {
     const t = translations[currentLang].ui;
@@ -97,6 +109,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
         iconActive: 'text-white',
         iconInactive: isDarkMode ? 'text-slate-500' : 'text-slate-400',
         navItemActive: isDarkMode ? 'bg-indigo-500/20 text-indigo-300' : 'bg-emerald-50 text-emerald-700',
+    };
+
+    const toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
     };
 
     return (
@@ -206,6 +230,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         <span>{t.andalusLibrary}</span>
                     </button>
 
+                    {/* Videos Library Button */}
+                    <button
+                        onClick={onOpenVideos}
+                        className={`flex items-center gap-3 p-3.5 rounded-xl transition-all w-full group font-medium bg-gradient-to-r from-purple-600 to-fuchsia-700 text-white shadow-lg hover:shadow-purple-500/30 transform hover:translate-y-[-2px]`}
+                    >
+                        <VideoIcon className="w-5 h-5" />
+                        <span>{t.videosLibrary}</span>
+                    </button>
+
+                    {/* Educational Portals Button */}
+                    <button
+                        onClick={onOpenEducationalPortals}
+                        className={`flex items-center gap-3 p-3.5 rounded-xl transition-all w-full group font-medium bg-gradient-to-r from-sky-600 to-blue-700 text-white shadow-lg hover:shadow-sky-500/30 transform hover:translate-y-[-2px]`}
+                    >
+                        <PortalIcon className="w-5 h-5" />
+                        <span>{t.educationalPortals}</span>
+                    </button>
+
                     {/* Adhan Button */}
                     <button
                         onClick={onOpenAdhan}
@@ -220,7 +262,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {/* Audio Mode Toggle */}
                     <div className="flex flex-col gap-3">
                         <span className={`text-xs uppercase tracking-wider font-bold px-1 ${theme.sectionLabel}`}>
-                            {isRtl ? 'الوضع' : 'Mode'}
+                            {t.mode}
                         </span>
                         <div
                             className={`p-1.5 rounded-full flex relative cursor-pointer border shadow-inner transition-colors duration-300 ${theme.switchContainer}`}
@@ -245,7 +287,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {/* Theme Toggle */}
                     <div className="flex flex-col gap-3">
                         <span className={`text-xs uppercase tracking-wider font-bold px-1 ${theme.sectionLabel}`}>
-                            {isRtl ? 'المظهر' : 'Theme'}
+                            {t.theme}
                         </span>
                         <div
                             className={`p-1.5 rounded-full flex relative cursor-pointer border shadow-inner transition-colors duration-300 ${theme.switchContainer}`}
@@ -270,6 +312,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                     <div className={`w-full h-px my-2 ${theme.divider}`}></div>
 
+                    {/* Full Screen Toggle */}
+                    <button
+                        onClick={toggleFullScreen}
+                        className={`flex items-center gap-3 p-3.5 rounded-xl transition-all w-full group font-medium
+                        ${theme.textPrimary} ${theme.hover}`}
+                    >
+                        <FullScreenIcon className={`w-5 h-5 ${theme.textSecondary}`} />
+                        <span>{t.fullscreen}</span>
+                    </button>
+
                     <button
                         onClick={onOpenAbout}
                         className={`flex items-center gap-3 p-3.5 rounded-xl transition-all w-full group font-medium
@@ -293,7 +345,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                         <div>
                             <div className={`mb-3 text-xs uppercase tracking-wider font-bold px-1 ${theme.sectionLabel}`}>
-                                Language / اللغة
+                                {t.language}
                             </div>
                             <div className="flex flex-col gap-2">
                                 {languages.map((lang) => (

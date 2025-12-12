@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" role="img" aria-label="Edraak logo">
+  <defs>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00b9b0" />
+      <stop offset="100%" stop-color="#00a59f" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="200" fill="white" fill-opacity="0" />
+  <g transform="translate(40,30)">
+    <g transform="translate(0,0)">
+      <path d="M0 30c0-8 6-14 14-14h32c8 0 14 6 14 14v32c0 8-6 14-14 14H24l18 18c5.5 5.5 5.5 14.5 0 20-5.5 5.5-14.5 5.5-20 0L-6 90c-5.5-5.5-5.5-14.5 0-20L12 58H14c0 0-14 0-14-14V30Z" fill="url(#arrowGrad)"/>
+    </g>
+    <g transform="translate(120,10)" fill="#241154">
+      <path d="M10 40c0-14 8-22 21-22h24v16h-20c-4 0-6 2-6 6v54c0 4 2 6 6 6h14c4 0 6-2 6-6V64h16v34c0 14-8 22-21 22H31c-13 0-21-8-21-22V40Z"/>
+      <path d="M114 18h18v102h-18V18Z"/>
+      <path d="M150 40c0-14 8-22 21-22h24v16h-20c-4 0-6 2-6 6v14h26v16h-26v28c0 4 2 6 6 6h20v16h-24c-13 0-21-8-21-22V40Z"/>
+      <path d="M232 18h18v30h16v16h-16v56h-18V64h-14V48h14V18Z"/>
+      <path d="M278 40c0-14 8-22 21-22h24v16h-20c-4 0-6 2-6 6v54c0 4 2 6 6 6h20v16h-24c-13 0-21-8-21-22V40Z"/>
+    </g>
+    <g transform="translate(116,120)" fill="#241154" font-family="'Cairo', 'Arial', sans-serif" font-size="34" font-weight="700" letter-spacing="2">
+      <text>EDRAAK</text>
+    </g>
+  </g>
+</svg>

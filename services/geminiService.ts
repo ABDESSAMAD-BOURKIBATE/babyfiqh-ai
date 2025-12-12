@@ -3,18 +3,18 @@ import { GoogleGenAI, Modality, Chat, GenerateContentResponse, Part, LiveServerM
 
 // Helper to get API Key safely
 const getApiKey = () => {
-    const key = process.env.API_KEY;
+    const key = import.meta.env.VITE_API_KEY;
     if (!key) {
-        console.error("API_KEY is missing in environment variables");
+        console.error("VITE_API_KEY is missing in environment variables");
         return "";
     }
     // Signal that a key exists (without printing it) for client-side debug
-    try { console.debug("API_KEY available"); } catch (e) {}
+    try { console.debug("API_KEY available"); } catch (e) { }
     return key;
 };
 
 // We initialize a default instance for standard chat, but live session will create its own
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY || "" });
 
 export { Chat };
 
@@ -22,7 +22,7 @@ export { Chat };
 export const createLimanourChat = (systemInstruction: string): Chat => {
     const key = getApiKey();
     if (!key) throw new Error("API Key missing");
-    
+
     const localAi = new GoogleGenAI({ apiKey: key });
     return localAi.chats.create({
         model: 'gemini-2.5-flash',
@@ -49,7 +49,7 @@ export const generateSpeech = async (text: string, voiceName: string = 'Fenrir')
     if (!key) throw new Error("API Key missing");
 
     const localAi = new GoogleGenAI({ apiKey: key });
-    
+
     // Contextual prompt for TTS to ensure tone matches
     const speechPrompt = `Speak nicely with a warm, wise, fatherly tone. Say: "${text}"`;
 
@@ -85,9 +85,9 @@ interface LiveSessionCallbacks {
 
 // New version with Transcription enabled
 export const connectToSmartLiveSession = async (
-    callbacks: LiveSessionCallbacks, 
-    systemInstruction: string,
-    voiceName: string = 'Fenrir'
+    callbacks: LiveSessionCallbacks,
+    systemInstruction?: string,
+    voiceName?: string
 ) => {
     const key = getApiKey();
     if (!key) {
@@ -98,16 +98,24 @@ export const connectToSmartLiveSession = async (
     // Create a fresh instance for the live session to ensure no stale state
     const liveAi = new GoogleGenAI({ apiKey: key });
 
+    const config: any = {
+        responseModalities: [Modality.AUDIO],
+        outputAudioTranscription: {}
+    };
+
+    if (systemInstruction) {
+        config.systemInstruction = systemInstruction;
+    }
+
+    if (voiceName) {
+        config.speechConfig = {
+            voiceConfig: { prebuiltVoiceConfig: { voiceName } }
+        };
+    }
+
     return liveAi.live.connect({
         model: 'gemini-2.0-flash-exp',
-        config: {
-            responseModalities: [Modality.AUDIO],
-            speechConfig: {
-                voiceConfig: { prebuiltVoiceConfig: { voiceName: voiceName } },
-            },
-            systemInstruction: systemInstruction,
-            outputAudioTranscription: {} // Enable transcription
-        },
+        config,
         callbacks: {
             onopen: () => {
                 callbacks.onOpen();
@@ -123,9 +131,9 @@ export const connectToSmartLiveSession = async (
                 // Check various possible locations for text in the response
                 const textPart = message.serverContent?.modelTurn?.parts?.find(p => p.text);
                 if (textPart && textPart.text && callbacks.onTranscription) {
-                     callbacks.onTranscription(textPart.text);
+                    callbacks.onTranscription(textPart.text);
                 }
-                
+
                 if (message.serverContent?.outputTranscription?.text && callbacks.onTranscription) {
                     callbacks.onTranscription(message.serverContent.outputTranscription.text);
                 }

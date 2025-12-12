@@ -1,7 +1,8 @@
-
 import React, { useState } from 'react';
 import { LogoIcon } from './icons/LogoIcon';
 import { Language, translations } from '../utils/translations';
+import { ProjectGuideModal } from './ProjectGuideModal';
+import { AnthemPlayer } from './AnthemPlayer';
 
 interface LandingPageProps {
     onSelectMode: (mode: 'parent' | 'child', subView?: 'login' | 'register' | 'forgot') => void;
@@ -13,18 +14,18 @@ interface LandingPageProps {
 const ParentModeIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M12 8a3 3 0 1 0 0 6 3 3 0 1 0 0-6" />
-        <path d="M16 16c0-2-2-3-4-3s-4 1-4 3" />
+        <circle cx="12" cy="9" r="3" />
+        <path d="M12 13c-3 0-5 2-5 4v1h10v-1c0-2-2-4-5-4z" />
     </svg>
 );
 
 const ChildModeIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
         <circle cx="12" cy="12" r="10" />
-        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-        <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3" strokeLinecap="round" />
-        <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3" strokeLinecap="round" />
-        <path d="M12 2a5 5 0 0 1 5 5" />
+        <path d="M9 13s1.5 2 4 2 4-2 4-2" />
+        <path d="M9 9h.01" strokeWidth="3" strokeLinecap="round" />
+        <path d="M15 9h.01" strokeWidth="3" strokeLinecap="round" />
+        <path d="M12 2a3 3 0 0 1 3 3" />
     </svg>
 );
 
@@ -66,6 +67,7 @@ const GlobeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearData, currentLang, onLangChange }) => {
     const [showParentOptions, setShowParentOptions] = useState(false);
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+    const [showProjectGuide, setShowProjectGuide] = useState(false);
 
     const t = translations[currentLang].ui.landing;
     const dir = translations[currentLang].direction;
@@ -153,8 +155,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                         <div className="flex justify-between items-start mb-6 w-full relative z-10">
-                            <div className="p-4 rounded-2xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/10 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300 shadow-lg ring-1 ring-white/5">
-                                <ParentModeIcon className="w-8 h-8" />
+                            <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-500">
+                                <img
+                                    src={import.meta.env.BASE_URL + 'images/parent_mode.jpg'}
+                                    alt="Parent Mode"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
                             <span className="px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[10px] md:text-xs font-bold tracking-wider uppercase h-fit">
                                 {t.parentMode}
@@ -200,8 +206,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                         <div className="flex justify-between items-start mb-6 w-full relative z-10">
-                            <div className="p-4 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/10 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-lg ring-1 ring-white/5">
-                                <ChildModeIcon className="w-8 h-8" />
+                            <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-500">
+                                <img
+                                    src={import.meta.env.BASE_URL + 'images/child_mode.jpg'}
+                                    alt="Child Mode"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
                             <span className="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] md:text-xs font-bold tracking-wider uppercase h-fit">
                                 {t.childMode}
@@ -240,6 +250,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
 
                 {/* Footer Actions */}
                 <div className="flex flex-col items-center gap-4 animate-fade-in-up z-10 opacity-80" style={{ animationDelay: '0.3s' }}>
+
+                    <button
+                        onClick={() => setShowProjectGuide(true)}
+                        className="group flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 border border-amber-500/30 hover:border-amber-500/50 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-amber-500/20 hover:-translate-y-1"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-amber-400 group-hover:text-amber-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span className="text-sm text-amber-100 group-hover:text-white transition-colors font-bold font-cairo">
+                            {t.projectGuide || 'دليل المشروع'}
+                        </span>
+                    </button>
+
                     <button
                         onClick={onClearData}
                         className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/20 transition-all duration-300 backdrop-blur-sm"
@@ -255,6 +278,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
                     </p>
                 </div>
 
+                {/* Project Guide Modal */}
+                {showProjectGuide && (
+                    <ProjectGuideModal
+                        onClose={() => setShowProjectGuide(false)}
+                        currentLang={currentLang}
+                    />
+                )}
+
                 {/* Parent Options Modal */}
                 {showParentOptions && (
                     <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
@@ -263,8 +294,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
                             </button>
 
-                            <div className="w-16 h-16 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-lg border border-indigo-500/30">
-                                <ParentModeIcon className="w-8 h-8 text-indigo-400" />
+                            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 shadow-xl border-4 border-indigo-500/30">
+                                <img
+                                    src={import.meta.env.BASE_URL + 'images/parent_mode.jpg'}
+                                    alt="Parent Mode"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
 
                             <h2 className="text-2xl font-bold text-white mb-2">{t.welcomeParent}</h2>
@@ -387,6 +422,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectMode, onClearD
             animation: pulse-slow 8s ease-in-out infinite;
         }
       `}</style>
+
+            {/* Anthem Player */}
+            <AnthemPlayer currentLang={currentLang} />
 
         </div>
     );

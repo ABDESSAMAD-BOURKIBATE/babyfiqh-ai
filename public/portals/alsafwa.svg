@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" role="img" aria-labelledby="title desc">
+  <title id="title">شعار كلية العلوم الشرعية والعربية - جامعة الصفوة</title>
+  <desc id="desc">شعار مبسّط بالألوان الخضراء والبنية مع نص عربي</desc>
+  <rect width="100%" height="100%" fill="transparent"/>
+  <g transform="translate(10 10) scale(0.9)">
+    <g>
+      <path d="M40 8 L60 8 L70 0 L80 8 L100 8 L100 48 L40 48 Z" fill="#2b7a35" opacity="0.95" />
+      <rect x="26" y="52" width="88" height="12" rx="2" fill="#2b7a35" />
+      <g transform="translate(70 30)">
+        <text x="-40" y="36" font-family="'Cairo', 'Tajawal', Arial" font-size="14" fill="#2b7a35">العلوم الشرعية</text>
+      </g>
+      <g transform="translate(70 50)">
+        <text x="-40" y="36" font-family="'Cairo', 'Tajawal', Arial" font-size="10" fill="#6b6b6b">كلية العلوم الشرعية والعربية</text>
+      </g>
+    </g>
+  </g>
+</svg>

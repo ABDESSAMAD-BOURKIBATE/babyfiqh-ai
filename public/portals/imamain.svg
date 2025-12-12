@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360" role="img" aria-labelledby="title desc">
+  <title id="title">شعار أكاديمية الإمامين</title>
+  <desc id="desc">شعار دائري لأكاديمية الإمامين مبسط ملون بالأخضر والبني مع نص عربي</desc>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="transparent"/>
+  <g transform="translate(180 180)">
+    <circle r="158" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+    <circle r="128" fill="#ffffff" stroke="#7a4b2b" stroke-width="6"/>
+    <g transform="translate(0 -8)">
+      <g transform="scale(1) translate(-0,-6)">
+        <path d="M0,-24 l36,-36 36,36 36,-36 36,36 -36,36 36,36 -36,36 -36,-36 -36,36 -36,-36 36,-36 z" fill="#7a4b2b" opacity="0.95" />
+        <g transform="translate(0 0)">
+          <text x="0" y="2" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial" font-size="62" font-weight="700" fill="#2b7a35">علم</text>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(0 -110)">
+      <text x="0" y="0" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial" font-size="20" fill="#7a4b2b">أكاديمية الإمامين</text>
+    </g>
+    <g transform="translate(0 120)">
+      <text x="0" y="0" text-anchor="middle" font-family="'Cairo', 'Tajawal', Arial" font-size="20" fill="#2b7a35">ابن باز - ابن عثيمين رحمهما الله</text>
+    </g>
+  </g>
+</svg>

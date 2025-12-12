@@ -1,0 +1,848 @@
+import { QuizLevel } from '../quizTypes';
+
+export const level4: QuizLevel = {
+    id: 4,
+    titleAr: 'قصص الأنبياء - الجزء الأول',
+    titleEn: 'Prophets Stories - Part 1',
+    description: 'اختبر معلوماتك في قصص الأنبياء من آدم إلى يوسف عليهم السلام',
+    descriptionEn: 'Test your knowledge of Prophets stories from Adam to Yusuf (AS)',
+    requiredScore: 70,
+    questions: [
+        // Adam (AS)
+        {
+            id: 1,
+            question: 'من هو أول الأنبياء؟',
+            questionEn: 'Who is the first Prophet?',
+            options: ['آدم عليه السلام', 'نوح عليه السلام', 'إبراهيم عليه السلام', 'موسى عليه السلام'],
+            optionsEn: ['Adam (AS)', 'Nuh (AS)', 'Ibrahim (AS)', 'Musa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'آدم عليه السلام هو أبو البشر وأول الأنبياء.',
+            explanationEn: 'Adam (AS) is the father of mankind and the first Prophet.'
+        },
+        {
+            id: 2,
+            question: 'مم خلق الله آدم عليه السلام؟',
+            questionEn: 'From what did Allah create Adam (AS)?',
+            options: ['من طين', 'من نور', 'من نار', 'من هواء'],
+            optionsEn: ['From Clay', 'From Light', 'From Fire', 'From Air'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'خلق الله آدم من تراب ثم من طين.',
+            explanationEn: 'Allah created Adam from dust, then from clay.'
+        },
+        {
+            id: 3,
+            question: 'من هي زوجة آدم عليه السلام؟',
+            questionEn: 'Who is the wife of Adam (AS)?',
+            options: ['حواء', 'سارة', 'هاجر', 'آسية'],
+            optionsEn: ['Hawwa (Eve)', 'Sarah', 'Hajar', 'Asiya'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'زوجة آدم عليه السلام هي حواء، خلقت من ضلعه.',
+            explanationEn: 'Adam\'s wife is Hawwa (Eve), created from his rib.'
+        },
+        {
+            id: 4,
+            question: 'لماذا أخرج الله آدم وحواء من الجنة؟',
+            questionEn: 'Why did Allah expel Adam and Hawwa from Paradise?',
+            options: ['لأنهما أكلا من الشجرة المحرمة', 'لأنهما تشاجرا', 'لأنهما نسيا الصلاة', 'لأنهما ناما'],
+            optionsEn: ['They ate from the forbidden tree', 'They fought', 'They forgot to pray', 'They slept'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'وسوس لهما الشيطان فأكلا من الشجرة التي نهاهما الله عنها.',
+            explanationEn: 'Shaytan whispered to them, so they ate from the tree Allah forbade them from.'
+        },
+        // Nuh (AS)
+        {
+            id: 5,
+            question: 'كم سنة دعا نوح عليه السلام قومه؟',
+            questionEn: 'For how many years did Nuh (AS) call his people?',
+            options: ['950 سنة', '100 سنة', '500 سنة', '1000 سنة'],
+            optionsEn: ['950 years', '100 years', '500 years', '1000 years'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'لبث نوح في قومه ألف سنة إلا خمسين عاماً يدعوهم إلى الله.',
+            explanationEn: 'Nuh stayed among his people for 950 years calling them to Allah.'
+        },
+        {
+            id: 6,
+            question: 'ماذا صنع نوح عليه السلام لينجو المؤمنون؟',
+            questionEn: 'What did Nuh (AS) build to save the believers?',
+            options: ['سفينة', 'قلعة', 'بيت', 'جبل'],
+            optionsEn: ['An Ark (Ship)', 'A Castle', 'A House', 'A Mountain'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'أمره الله بصنع سفينة (الفلك) لينجو هو والمؤمنون من الطوفان.',
+            explanationEn: 'Allah commanded him to build an Ark to save himself and the believers from the flood.'
+        },
+        {
+            id: 7,
+            question: 'من الذي رفض ركوب السفينة مع نوح؟',
+            questionEn: 'Who refused to board the Ark with Nuh (AS)?',
+            options: ['ابنه', 'أخوه', 'أبوه', 'جاره'],
+            optionsEn: ['His son', 'His brother', 'His father', 'His neighbor'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'رفض ابن نوح الركوب وقال سآوي إلى جبل يعصمني من الماء.',
+            explanationEn: 'Nuh\'s son refused to board, saying he would take refuge on a mountain.'
+        },
+        // Hud (AS)
+        {
+            id: 8,
+            question: 'إلى أي قوم أرسل هود عليه السلام؟',
+            questionEn: 'To which people was Hud (AS) sent?',
+            options: ['قوم عاد', 'قوم ثمود', 'قوم مدين', 'قوم لوط'],
+            optionsEn: ['People of Ad', 'People of Thamud', 'People of Madyan', 'People of Lut'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أرسل الله هوداً عليه السلام إلى قوم عاد.',
+            explanationEn: 'Allah sent Hud (AS) to the people of Ad.'
+        },
+        {
+            id: 9,
+            question: 'بماذا أهلك الله قوم عاد؟',
+            questionEn: 'How did Allah destroy the people of Ad?',
+            options: ['بريح صرصر عاتية', 'بالصيحة', 'بالغرق', 'بالحجارة'],
+            optionsEn: ['With a furious wind', 'With a blast', 'With drowning', 'With stones'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أهلكهم الله بريح شديدة استمرت 7 ليالٍ و8 أيام.',
+            explanationEn: 'Allah destroyed them with a violent wind that lasted 7 nights and 8 days.'
+        },
+        // Saleh (AS)
+        {
+            id: 10,
+            question: 'ما هي معجزة صالح عليه السلام؟',
+            questionEn: 'What was the miracle of Saleh (AS)?',
+            options: ['الناقة', 'العصا', 'اليد البيضاء', 'النار'],
+            optionsEn: ['The She-Camel', 'The Staff', 'The White Hand', 'The Fire'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'أخرج الله لهم ناقة عظيمة من الصخرة كمعجزة.',
+            explanationEn: 'Allah brought forth a giant she-camel from a rock as a miracle.'
+        },
+        {
+            id: 11,
+            question: 'إلى أي قوم أرسل صالح عليه السلام؟',
+            questionEn: 'To which people was Saleh (AS) sent?',
+            options: ['قوم ثمود', 'قوم عاد', 'أصحاب الأيكة', 'بني إسرائيل'],
+            optionsEn: ['People of Thamud', 'People of Ad', 'People of Aikah', 'Bani Israel'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أرسل صالح عليه السلام إلى قوم ثمود.',
+            explanationEn: 'Saleh (AS) was sent to the people of Thamud.'
+        },
+        {
+            id: 12,
+            question: 'ماذا فعل قوم ثمود بالناقة؟',
+            questionEn: 'What did the people of Thamud do to the camel?',
+            options: ['عقروها (قتلوها)', 'أطعموها', 'ركبوها', 'باعوها'],
+            optionsEn: ['Hamstrung (killed) her', 'Fed her', 'Rode her', 'Sold her'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'كذبوا نبيهم وعقروا الناقة فعاقبهم الله.',
+            explanationEn: 'They denied their Prophet and killed the camel, so Allah punished them.'
+        },
+        // Ibrahim (AS)
+        {
+            id: 13,
+            question: 'بماذا يلقب إبراهيم عليه السلام؟',
+            questionEn: 'What is the title of Ibrahim (AS)?',
+            options: ['خليل الله', 'كليم الله', 'روح الله', 'حبيب الله'],
+            optionsEn: ['Khalilullah (Friend of Allah)', 'Kalimullah', 'Ruhullah', 'Habibullah'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'اتخذ الله إبراهيم خليلاً.',
+            explanationEn: 'Allah took Ibrahim as a close friend (Khalil).'
+        },
+        {
+            id: 14,
+            question: 'من الذي بنى الكعبة المشرفة؟',
+            questionEn: 'Who built the Holy Kaaba?',
+            options: ['إبراهيم وإسماعيل', 'آدم', 'نوح', 'محمد ﷺ'],
+            optionsEn: ['Ibrahim and Ismail', 'Adam', 'Nuh', 'Muhammad ﷺ'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'بنى إبراهيم وابنه إسماعيل عليهما السلام الكعبة بأمر الله.',
+            explanationEn: 'Ibrahim and his son Ismail (AS) built the Kaaba by Allah\'s command.'
+        },
+        {
+            id: 15,
+            question: 'ماذا حدث عندما ألقي إبراهيم في النار؟',
+            questionEn: 'What happened when Ibrahim was thrown into the fire?',
+            options: ['كانت برداً وسلاماً', 'احترق', 'نزل المطر', 'هرب'],
+            optionsEn: ['It became cool and safe', 'He burned', 'Rain fell', 'He escaped'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'قال الله للنار: "كوني برداً وسلاماً على إبراهيم".',
+            explanationEn: 'Allah said to the fire: "Be cool and safe for Ibrahim."'
+        },
+        {
+            id: 16,
+            question: 'من هي الزوجة الأولى لإبراهيم عليه السلام؟',
+            questionEn: 'Who was the first wife of Ibrahim (AS)?',
+            options: ['سارة', 'هاجر', 'آسية', 'مريم'],
+            optionsEn: ['Sarah', 'Hajar', 'Asiya', 'Maryam'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'سارة هي الزوجة الأولى، وهاجر هي الثانية.',
+            explanationEn: 'Sarah was the first wife, and Hajar was the second.'
+        },
+        // Lut (AS)
+        {
+            id: 17,
+            question: 'ما هي صلة القرابة بين لوط وإبراهيم عليهما السلام؟',
+            questionEn: 'What is the relationship between Lut and Ibrahim (AS)?',
+            options: ['لوط ابن أخ إبراهيم', 'لوط ابن إبراهيم', 'لوط أخو إبراهيم', 'لوط والد إبراهيم'],
+            optionsEn: ['Lut is Ibrahim\'s nephew', 'Lut is Ibrahim\'s son', 'Lut is Ibrahim\'s brother', 'Lut is Ibrahim\'s father'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'لوط هو ابن أخ إبراهيم عليهما السلام.',
+            explanationEn: 'Lut is the son of Ibrahim\'s brother (his nephew).'
+        },
+        {
+            id: 18,
+            question: 'ماذا حل بقوم لوط؟',
+            questionEn: 'What happened to the people of Lut?',
+            options: ['قلب الله قريتهم وأمطرهم حجارة', 'غرقوا في البحر', 'أخذتهم الصيحة', 'أكلتهم السباع'],
+            optionsEn: ['Allah overturned their city and rained stones', 'Drowned in sea', 'Blast took them', 'Eaten by beasts'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'جعل الله عاليها سافلها وأمطر عليهم حجارة من سجيل.',
+            explanationEn: 'Allah turned their city upside down and rained upon them stones of baked clay.'
+        },
+        // Ismail (AS)
+        {
+            id: 19,
+            question: 'من هو الذبيح؟',
+            questionEn: 'Who is the Sacrificed One (Az-Zabih)?',
+            options: ['إسماعيل عليه السلام', 'إسحاق عليه السلام', 'يوسف عليه السلام', 'يحيى عليه السلام'],
+            optionsEn: ['Ismail (AS)', 'Ishaq (AS)', 'Yusuf (AS)', 'Yahya (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'إسماعيل هو الذي أمر الله إبراهيم بذبحه في المنام اختباراً له.',
+            explanationEn: 'Ismail is the one whom Allah commanded Ibrahim to sacrifice in a dream as a test.'
+        },
+        {
+            id: 20,
+            question: 'ما هو الماء الذي نبع تحت قدمي إسماعيل؟',
+            questionEn: 'What water gushed out under Ismail\'s feet?',
+            options: ['ماء زمزم', 'نهر النيل', 'نهر الفرات', 'عين جالوت'],
+            optionsEn: ['Zamzam Water', 'Nile River', 'Euphrates River', 'Ain Jalut'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'فجر الله ماء زمزم إكراماً لإسماعيل وأمه هاجر.',
+            explanationEn: 'Allah caused Zamzam water to gush forth for Ismail and his mother Hajar.'
+        },
+        // Ishaq & Yaqub (AS)
+        {
+            id: 21,
+            question: 'من هو والد يعقوب عليه السلام؟',
+            questionEn: 'Who is the father of Yaqub (AS)?',
+            options: ['إسحاق عليه السلام', 'إسماعيل عليه السلام', 'إبراهيم عليه السلام', 'يوسف عليه السلام'],
+            optionsEn: ['Ishaq (AS)', 'Ismail (AS)', 'Ibrahim (AS)', 'Yusuf (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'يعقوب هو ابن إسحاق بن إبراهيم عليهم السلام.',
+            explanationEn: 'Yaqub is the son of Ishaq, son of Ibrahim (AS).'
+        },
+        {
+            id: 22,
+            question: 'ما هو اللقب الآخر ليعقوب عليه السلام؟',
+            questionEn: 'What is the other title of Yaqub (AS)?',
+            options: ['إسرائيل', 'المسيح', 'الصديق', 'الفاروق'],
+            optionsEn: ['Israel', 'The Messiah', 'As-Siddiq', 'Al-Farooq'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'يعقوب عليه السلام يلقب بإسرائيل، وبنو إسرائيل هم أبناؤه وذريته.',
+            explanationEn: 'Yaqub (AS) is titled Israel, and Bani Israel are his children and descendants.'
+        },
+        // Yusuf (AS)
+        {
+            id: 23,
+            question: 'كم عدد إخوة يوسف عليه السلام؟',
+            questionEn: 'How many brothers did Yusuf (AS) have?',
+            options: ['11', '10', '12', '9'],
+            optionsEn: ['11', '10', '12', '9'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'قال يوسف لأبيه: "إني رأيت أحد عشر كوكباً"، وهم إخوته.',
+            explanationEn: 'Yusuf said to his father: "I saw eleven stars," referring to his brothers.'
+        },
+        {
+            id: 24,
+            question: 'أين ألقى إخوة يوسف أخاهم؟',
+            questionEn: 'Where did Yusuf\'s brothers throw him?',
+            options: ['في الجب (البئر)', 'في البحر', 'في الصحراء', 'في السجن'],
+            optionsEn: ['In the well', 'In the sea', 'In the desert', 'In prison'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'ألقوه في غيابات الجب ليلتقطه بعض السيارة.',
+            explanationEn: 'They threw him into the bottom of the well so some travelers would pick him up.'
+        },
+        {
+            id: 25,
+            question: 'ما هي المعجزة التي اشتهر بها يوسف عليه السلام؟',
+            questionEn: 'What miracle was Yusuf (AS) famous for?',
+            options: ['تفسير الأحلام', 'إحياء الموتى', 'كلام الحيوانات', 'شفاء المرضى'],
+            optionsEn: ['Interpreting dreams', 'Raising the dead', 'Speaking to animals', 'Curing the sick'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'علمه الله تأويل الأحاديث (تفسير الأحلام).',
+            explanationEn: 'Allah taught him the interpretation of dreams.'
+        },
+        {
+            id: 26,
+            question: 'ماذا أصبح يوسف عليه السلام في مصر؟',
+            questionEn: 'What did Yusuf (AS) become in Egypt?',
+            options: ['عزيز مصر (الوزير)', 'ملك مصر', 'قائد الجيش', 'تاجر'],
+            optionsEn: ['Aziz of Egypt (Minister)', 'King of Egypt', 'Army Commander', 'Merchant'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أصبح يوسف عزيز مصر ومسؤولاً عن خزائن الأرض.',
+            explanationEn: 'Yusuf became the Aziz of Egypt and was in charge of the storehouses.'
+        },
+        {
+            id: 27,
+            question: 'ما اسم قميص يوسف الذي رد بصر أبيه؟',
+            questionEn: 'What restored Yaqub\'s sight?',
+            options: ['قميص يوسف', 'عصا يوسف', 'دواء يوسف', 'دعاء يوسف'],
+            optionsEn: ['Yusuf\'s shirt', 'Yusuf\'s staff', 'Yusuf\'s medicine', 'Yusuf\'s prayer'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'ألقى البشير قميص يوسف على وجه أبيه فارتد بصيراً.',
+            explanationEn: 'The bearer of good news cast Yusuf\'s shirt over his father\'s face, and he regained his sight.'
+        },
+        // General Prophets Info
+        {
+            id: 28,
+            question: 'كم عدد الأنبياء المذكورين في القرآن؟',
+            questionEn: 'How many Prophets are mentioned in the Quran?',
+            options: ['25', '124000', '313', '10'],
+            optionsEn: ['25', '124000', '313', '10'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'ذكر الله في القرآن الكريم 25 نبياً ورسولاً.',
+            explanationEn: 'Allah mentioned 25 Prophets and Messengers in the Quran.'
+        },
+        {
+            id: 29,
+            question: 'من هم أولو العزم من الرسل؟',
+            questionEn: 'Who are the Ulu al-Azm (Arch-Prophets)?',
+            options: ['نوح، إبراهيم، موسى، عيسى، محمد ﷺ', 'آدم، نوح، إبراهيم، إسماعيل، إسحاق', 'محمد، أبو بكر، عمر، عثمان، علي', 'داود، سليمان، أيوب، يوسف، يونس'],
+            optionsEn: ['Nuh, Ibrahim, Musa, Isa, Muhammad ﷺ', 'Adam, Nuh, Ibrahim, Ismail, Ishaq', 'Muhammad, Abu Bakr, Umar, Uthman, Ali', 'Dawud, Sulaiman, Ayoub, Yusuf, Yunus'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'أولو العزم خمسة: نوح، إبراهيم، موسى، عيسى، ومحمد عليهم الصلاة والسلام.',
+            explanationEn: 'The Ulu al-Azm are five: Nuh, Ibrahim, Musa, Isa, and Muhammad (peace be upon them).'
+        },
+        {
+            id: 30,
+            question: 'من هو النبي الذي ابتلعه الحوت؟',
+            questionEn: 'Which Prophet was swallowed by a whale?',
+            options: ['يونس عليه السلام', 'يوسف عليه السلام', 'موسى عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Yunus (AS)', 'Yusuf (AS)', 'Musa (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'يونس عليه السلام (ذا النون) التقمه الحوت.',
+            explanationEn: 'Yunus (AS) was swallowed by the whale.'
+        },
+        {
+            id: 31,
+            question: 'من هو النبي الذي سخر الله له الجن والريح؟',
+            questionEn: 'Which Prophet had control over Jinn and Wind?',
+            options: ['سليمان عليه السلام', 'داود عليه السلام', 'موسى عليه السلام', 'عيسى عليه السلام'],
+            optionsEn: ['Sulaiman (AS)', 'Dawud (AS)', 'Musa (AS)', 'Isa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'سخر الله لسليمان الريح والجن والطير.',
+            explanationEn: 'Allah subjected the wind, Jinn, and birds to Sulaiman (AS).'
+        },
+        {
+            id: 32,
+            question: 'من هو النبي الذي ألان الله له الحديد؟',
+            questionEn: 'For which Prophet did Allah make iron soft?',
+            options: ['داود عليه السلام', 'سليمان عليه السلام', 'إبراهيم عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Dawud (AS)', 'Sulaiman (AS)', 'Ibrahim (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'ألان الله الحديد لداود عليه السلام ليصنع الدروع.',
+            explanationEn: 'Allah made iron soft for Dawud (AS) to make armor.'
+        },
+        {
+            id: 33,
+            question: 'من هو النبي الذي كلم الله تكليماً؟',
+            questionEn: 'Which Prophet spoke directly to Allah?',
+            options: ['موسى عليه السلام', 'عيسى عليه السلام', 'إبراهيم عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Musa (AS)', 'Isa (AS)', 'Ibrahim (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'موسى عليه السلام هو كليم الله.',
+            explanationEn: 'Musa (AS) is Kalimullah (the one who spoke to Allah).'
+        },
+        {
+            id: 34,
+            question: 'من هو النبي الذي ولد بدون أب؟',
+            questionEn: 'Which Prophet was born without a father?',
+            options: ['عيسى عليه السلام', 'آدم عليه السلام', 'يحيى عليه السلام', 'إسماعيل عليه السلام'],
+            optionsEn: ['Isa (AS)', 'Adam (AS)', 'Yahya (AS)', 'Ismail (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'عيسى ابن مريم عليه السلام ولد بمعجزة من غير أب.',
+            explanationEn: 'Isa son of Maryam (AS) was born miraculously without a father.'
+        },
+        {
+            id: 35,
+            question: 'من هو النبي الذي صبر على المرض طويلاً؟',
+            questionEn: 'Which Prophet was patient with illness for a long time?',
+            options: ['أيوب عليه السلام', 'يعقوب عليه السلام', 'يوسف عليه السلام', 'يونس عليه السلام'],
+            optionsEn: ['Ayoub (AS)', 'Yaqub (AS)', 'Yusuf (AS)', 'Yunus (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أيوب عليه السلام ضرب به المثل في الصبر على البلاء والمرض.',
+            explanationEn: 'Ayoub (AS) is the exemplar of patience in suffering and illness.'
+        },
+        {
+            id: 36,
+            question: 'من هو النبي الذي قتله قومه؟',
+            questionEn: 'Which Prophet was killed by his people?',
+            options: ['زكريا عليه السلام', 'موسى عليه السلام', 'عيسى عليه السلام', 'إبراهيم عليه السلام'],
+            optionsEn: ['Zakariya (AS)', 'Musa (AS)', 'Isa (AS)', 'Ibrahim (AS)'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'قتل بنو إسرائيل زكريا ويحيى عليهما السلام.',
+            explanationEn: 'Bani Israel killed Zakariya and Yahya (AS).'
+        },
+        {
+            id: 37,
+            question: 'من هو النبي الذي بشر بقدوم محمد ﷺ؟',
+            questionEn: 'Which Prophet foretold the coming of Muhammad ﷺ?',
+            options: ['عيسى عليه السلام', 'موسى عليه السلام', 'إبراهيم عليه السلام', 'داود عليه السلام'],
+            optionsEn: ['Isa (AS)', 'Musa (AS)', 'Ibrahim (AS)', 'Dawud (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'قال عيسى: "ومبشراً برسول يأتي من بعدي اسمه أحمد".',
+            explanationEn: 'Isa said: "And giving good tidings of a Messenger to come after me, whose name is Ahmad."'
+        },
+        {
+            id: 38,
+            question: 'من هو خاتم الأنبياء والمرسلين؟',
+            questionEn: 'Who is the Seal of Prophets and Messengers?',
+            options: ['محمد ﷺ', 'عيسى عليه السلام', 'موسى عليه السلام', 'إبراهيم عليه السلام'],
+            optionsEn: ['Muhammad ﷺ', 'Isa (AS)', 'Musa (AS)', 'Ibrahim (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'محمد ﷺ هو آخر الأنبياء ولا نبي بعده.',
+            explanationEn: 'Muhammad ﷺ is the last Prophet and there is no Prophet after him.'
+        },
+        {
+            id: 39,
+            question: 'ما هي معجزة محمد ﷺ الخالدة؟',
+            questionEn: 'What is the eternal miracle of Muhammad ﷺ?',
+            options: ['القرآن الكريم', 'انشقاق القمر', 'نبع الماء', 'الإسراء والمعراج'],
+            optionsEn: ['The Holy Quran', 'Splitting of the Moon', 'Water gushing', 'Isra and Mi\'raj'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'القرآن الكريم هو المعجزة الباقية إلى يوم القيامة.',
+            explanationEn: 'The Holy Quran is the miracle that remains until the Day of Judgment.'
+        },
+        {
+            id: 40,
+            question: 'من هو النبي الذي كان يعمل نجاراً؟',
+            questionEn: 'Which Prophet worked as a carpenter?',
+            options: ['زكريا عليه السلام', 'داود عليه السلام', 'إدريس عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Zakariya (AS)', 'Dawud (AS)', 'Idris (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'كان زكريا عليه السلام نجاراً.',
+            explanationEn: 'Zakariya (AS) was a carpenter.'
+        },
+        {
+            id: 41,
+            question: 'من هو النبي الذي كان يعمل حداداً؟',
+            questionEn: 'Which Prophet worked as a blacksmith?',
+            options: ['داود عليه السلام', 'سليمان عليه السلام', 'إبراهيم عليه السلام', 'موسى عليه السلام'],
+            optionsEn: ['Dawud (AS)', 'Sulaiman (AS)', 'Ibrahim (AS)', 'Musa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'كان داود عليه السلام يعمل حداداً ويصنع الدروع.',
+            explanationEn: 'Dawud (AS) worked as a blacksmith and made armor.'
+        },
+        {
+            id: 42,
+            question: 'من هو النبي الذي كان يعمل خياطاً؟',
+            questionEn: 'Which Prophet worked as a tailor?',
+            options: ['إدريس عليه السلام', 'نوح عليه السلام', 'شعيب عليه السلام', 'صالح عليه السلام'],
+            optionsEn: ['Idris (AS)', 'Nuh (AS)', 'Shu\'aib (AS)', 'Saleh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'كان إدريس عليه السلام أول من خط بالقلم وأول من خاط الثياب.',
+            explanationEn: 'Idris (AS) was the first to write with a pen and the first to sew clothes.'
+        },
+        {
+            id: 43,
+            question: 'من هو خطيب الأنبياء؟',
+            questionEn: 'Who is the Orator of the Prophets?',
+            options: ['شعيب عليه السلام', 'هارون عليه السلام', 'إسماعيل عليه السلام', 'لوط عليه السلام'],
+            optionsEn: ['Shu\'aib (AS)', 'Harun (AS)', 'Ismail (AS)', 'Lut (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'لقب شعيب عليه السلام بخطيب الأنبياء لفصاحته وحسن بلاغته.',
+            explanationEn: 'Shu\'aib (AS) was titled the Orator of the Prophets for his eloquence.'
+        },
+        {
+            id: 44,
+            question: 'من هو النبي الذي كلمه الله عند جبل الطور؟',
+            questionEn: 'Which Prophet did Allah speak to at Mount Tur?',
+            options: ['موسى عليه السلام', 'عيسى عليه السلام', 'محمد ﷺ', 'إبراهيم عليه السلام'],
+            optionsEn: ['Musa (AS)', 'Isa (AS)', 'Muhammad ﷺ', 'Ibrahim (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'كلم الله موسى عليه السلام عند جبل الطور في سيناء.',
+            explanationEn: 'Allah spoke to Musa (AS) at Mount Tur in Sinai.'
+        },
+        {
+            id: 45,
+            question: 'من هو النبي الذي رفع إلى السماء؟',
+            questionEn: 'Which Prophet was raised to the heavens?',
+            options: ['عيسى عليه السلام', 'يحيى عليه السلام', 'زكريا عليه السلام', 'موسى عليه السلام'],
+            optionsEn: ['Isa (AS)', 'Yahya (AS)', 'Zakariya (AS)', 'Musa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'رفع الله عيسى عليه السلام إليه وسينزل في آخر الزمان.',
+            explanationEn: 'Allah raised Isa (AS) to Himself, and he will descend in the End Times.'
+        },
+        {
+            id: 46,
+            question: 'من هو النبي الذي آمن به جميع قومه؟',
+            questionEn: 'Which Prophet was believed by all his people?',
+            options: ['يونس عليه السلام', 'نوح عليه السلام', 'هود عليه السلام', 'صالح عليه السلام'],
+            optionsEn: ['Yunus (AS)', 'Nuh (AS)', 'Hud (AS)', 'Saleh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'قوم يونس هم الوحيدون الذين آمنوا جميعاً بعد أن رأوا العذاب فكشفه الله عنهم.',
+            explanationEn: 'The people of Yunus are the only ones who all believed after seeing the punishment, so Allah removed it.'
+        },
+        {
+            id: 47,
+            question: 'من هو النبي الذي طلب رؤية الله؟',
+            questionEn: 'Which Prophet asked to see Allah?',
+            options: ['موسى عليه السلام', 'إبراهيم عليه السلام', 'عيسى عليه السلام', 'محمد ﷺ'],
+            optionsEn: ['Musa (AS)', 'Ibrahim (AS)', 'Isa (AS)', 'Muhammad ﷺ'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'قال موسى: "رب أرني أنظر إليك".',
+            explanationEn: 'Musa said: "My Lord, show me [Yourself] that I may look at You."'
+        },
+        {
+            id: 48,
+            question: 'من هو النبي الذي انشق له البحر؟',
+            questionEn: 'For which Prophet did the sea split?',
+            options: ['موسى عليه السلام', 'نوح عليه السلام', 'يونس عليه السلام', 'عيسى عليه السلام'],
+            optionsEn: ['Musa (AS)', 'Nuh (AS)', 'Yunus (AS)', 'Isa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'ضرب موسى البحر بعصاه فانفلق فكان كل فرق كالطود العظيم.',
+            explanationEn: 'Musa struck the sea with his staff, and it split.'
+        },
+        {
+            id: 49,
+            question: 'من هو النبي الذي كانت عصاه تتحول لثعبان؟',
+            questionEn: 'Which Prophet\'s staff turned into a snake?',
+            options: ['موسى عليه السلام', 'سليمان عليه السلام', 'إبراهيم عليه السلام', 'صالح عليه السلام'],
+            optionsEn: ['Musa (AS)', 'Sulaiman (AS)', 'Ibrahim (AS)', 'Saleh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'كانت عصا موسى تتحول إلى ثعبان مبين كمعجزة.',
+            explanationEn: 'Musa\'s staff turned into a clear snake as a miracle.'
+        },
+        {
+            id: 50,
+            question: 'من هو النبي الذي أوتي ملكاً لا ينبغي لأحد من بعده؟',
+            questionEn: 'Which Prophet was given a kingdom no one else would have?',
+            options: ['سليمان عليه السلام', 'داود عليه السلام', 'يوسف عليه السلام', 'ذو القرنين'],
+            optionsEn: ['Sulaiman (AS)', 'Dawud (AS)', 'Yusuf (AS)', 'Dhul-Qarnayn'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'دعا سليمان: "رب اغفر لي وهب لي ملكاً لا ينبغي لأحد من بعدي".',
+            explanationEn: 'Sulaiman prayed: "My Lord, forgive me and grant me a kingdom such as will not belong to anyone after me."'
+        },
+        {
+            id: 51,
+            question: 'من هو النبي الذي مات وهو متكئ على عصاه؟',
+            questionEn: 'Which Prophet died while leaning on his staff?',
+            options: ['سليمان عليه السلام', 'موسى عليه السلام', 'زكريا عليه السلام', 'داود عليه السلام'],
+            optionsEn: ['Sulaiman (AS)', 'Musa (AS)', 'Zakariya (AS)', 'Dawud (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'مات سليمان وهو واقف يصلي متكئاً على عصاه ولم تعلم الجن بموته إلا بعد أن أكلت الأرضة عصاه.',
+            explanationEn: 'Sulaiman died standing in prayer leaning on his staff, and the Jinn didn\'t know until a termite ate the staff.'
+        },
+        {
+            id: 52,
+            question: 'من هو النبي الذي قتل جالوت؟',
+            questionEn: 'Which Prophet killed Jalut (Goliath)?',
+            options: ['داود عليه السلام', 'طالوت', 'موسى عليه السلام', 'سليمان عليه السلام'],
+            optionsEn: ['Dawud (AS)', 'Talut', 'Musa (AS)', 'Sulaiman (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'قتل داود جالوت بالمقلاع.',
+            explanationEn: 'Dawud killed Jalut with a sling.'
+        },
+        {
+            id: 53,
+            question: 'من هو النبي الذي كان يسبح معه الجبال والطير؟',
+            questionEn: 'With which Prophet did the mountains and birds glorify Allah?',
+            options: ['داود عليه السلام', 'سليمان عليه السلام', 'إبراهيم عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Dawud (AS)', 'Sulaiman (AS)', 'Ibrahim (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'سخر الله الجبال والطير تسبح مع داود عليه السلام.',
+            explanationEn: 'Allah subjected the mountains and birds to glorify Him along with Dawud (AS).'
+        },
+        {
+            id: 54,
+            question: 'من هو النبي الذي كفله زكريا؟',
+            questionEn: 'Which Prophet was the guardian of Maryam?',
+            options: ['زكريا عليه السلام', 'يحيى عليه السلام', 'عيسى عليه السلام', 'موسى عليه السلام'],
+            optionsEn: ['Zakariya (AS)', 'Yahya (AS)', 'Isa (AS)', 'Musa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'كفل زكريا مريم عليها السلام.',
+            explanationEn: 'Zakariya was the guardian of Maryam (AS).'
+        },
+        {
+            id: 55,
+            question: 'من هو النبي الذي بشر بيحيى وهو شيخ كبير؟',
+            questionEn: 'Which Prophet was given tidings of Yahya in old age?',
+            options: ['زكريا عليه السلام', 'إبراهيم عليه السلام', 'يعقوب عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Zakariya (AS)', 'Ibrahim (AS)', 'Yaqub (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'بشرت الملائكة زكريا بيحيى وهو قائم يصلي في المحراب.',
+            explanationEn: 'The angels gave Zakariya tidings of Yahya while he was standing in prayer.'
+        },
+        {
+            id: 56,
+            question: 'ما هي صلة القرابة بين يحيى وعيسى عليهما السلام؟',
+            questionEn: 'What is the relationship between Yahya and Isa (AS)?',
+            options: ['أبناء خالة', 'أخوة', 'أب وابن', 'أصدقاء'],
+            optionsEn: ['Cousins (Maternal)', 'Brothers', 'Father and Son', 'Friends'],
+            correctAnswer: 0,
+            difficulty: 'hard',
+            explanation: 'يحيى وعيسى عليهما السلام ابنا خالة.',
+            explanationEn: 'Yahya and Isa (AS) were cousins (their mothers were sisters/related).'
+        },
+        {
+            id: 57,
+            question: 'من هو النبي الذي تكلم في المهد صبياً؟',
+            questionEn: 'Which Prophet spoke in the cradle as a baby?',
+            options: ['عيسى عليه السلام', 'موسى عليه السلام', 'يحيى عليه السلام', 'يوسف عليه السلام'],
+            optionsEn: ['Isa (AS)', 'Musa (AS)', 'Yahya (AS)', 'Yusuf (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'تكلم عيسى في المهد ليبرئ أمه مريم.',
+            explanationEn: 'Isa spoke in the cradle to exonerate his mother Maryam.'
+        },
+        {
+            id: 58,
+            question: 'ما هو الكتاب الذي أنزل على موسى؟',
+            questionEn: 'What book was revealed to Musa (AS)?',
+            options: ['التوراة', 'الإنجيل', 'الزبور', 'القرآن'],
+            optionsEn: ['Torah', 'Gospel (Injeel)', 'Psalms (Zabur)', 'Quran'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'أنزل الله التوراة على موسى عليه السلام.',
+            explanationEn: 'Allah revealed the Torah to Musa (AS).'
+        },
+        {
+            id: 59,
+            question: 'ما هو الكتاب الذي أنزل على عيسى؟',
+            questionEn: 'What book was revealed to Isa (AS)?',
+            options: ['الإنجيل', 'التوراة', 'الزبور', 'الصحف'],
+            optionsEn: ['Gospel (Injeel)', 'Torah', 'Psalms (Zabur)', 'Scrolls'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'أنزل الله الإنجيل على عيسى عليه السلام.',
+            explanationEn: 'Allah revealed the Gospel (Injeel) to Isa (AS).'
+        },
+        {
+            id: 60,
+            question: 'ما هو الكتاب الذي أنزل على داود؟',
+            questionEn: 'What book was revealed to Dawud (AS)?',
+            options: ['الزبور', 'التوراة', 'الإنجيل', 'الصحف'],
+            optionsEn: ['Psalms (Zabur)', 'Torah', 'Gospel (Injeel)', 'Scrolls'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'وآتينا داود زبوراً.',
+            explanationEn: 'And We gave Dawud the Zabur (Psalms).'
+        },
+        {
+            id: 61,
+            question: 'من هو النبي الذي أرسل إلى مدين؟',
+            questionEn: 'Which Prophet was sent to Madyan?',
+            options: ['شعيب عليه السلام', 'صالح عليه السلام', 'هود عليه السلام', 'لوط عليه السلام'],
+            optionsEn: ['Shu\'aib (AS)', 'Saleh (AS)', 'Hud (AS)', 'Lut (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أرسل شعيب إلى أهل مدين (أصحاب الأيكة).',
+            explanationEn: 'Shu\'aib was sent to the people of Madyan.'
+        },
+        {
+            id: 62,
+            question: 'ماذا كان يعبد قوم إبراهيم؟',
+            questionEn: 'What did the people of Ibrahim worship?',
+            options: ['الأصنام والكواكب', 'النار', 'الشمس فقط', 'البقر'],
+            optionsEn: ['Idols and Planets', 'Fire', 'Sun only', 'Cows'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'كانوا يعبدون الأصنام والكواكب.',
+            explanationEn: 'They worshipped idols and planets/stars.'
+        },
+        {
+            id: 63,
+            question: 'من هو النبي الذي حطم الأصنام؟',
+            questionEn: 'Which Prophet destroyed the idols?',
+            options: ['إبراهيم عليه السلام', 'نوح عليه السلام', 'موسى عليه السلام', 'عيسى عليه السلام'],
+            optionsEn: ['Ibrahim (AS)', 'Nuh (AS)', 'Musa (AS)', 'Isa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'حطم إبراهيم أصنام قومه إلا كبيراً لهم.',
+            explanationEn: 'Ibrahim destroyed the idols of his people except the biggest one.'
+        },
+        {
+            id: 64,
+            question: 'من هو النبي الذي أمره الله ببناء السفينة؟',
+            questionEn: 'Which Prophet was commanded to build the Ark?',
+            options: ['نوح عليه السلام', 'هود عليه السلام', 'صالح عليه السلام', 'لوط عليه السلام'],
+            optionsEn: ['Nuh (AS)', 'Hud (AS)', 'Saleh (AS)', 'Lut (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'أمر الله نوحاً ببناء السفينة.',
+            explanationEn: 'Allah commanded Nuh to build the Ark.'
+        },
+        {
+            id: 65,
+            question: 'من هو النبي الذي دعا ربه "أني مسني الضر"؟',
+            questionEn: 'Which Prophet prayed "Adversity has touched me"?',
+            options: ['أيوب عليه السلام', 'يعقوب عليه السلام', 'يونس عليه السلام', 'موسى عليه السلام'],
+            optionsEn: ['Ayoub (AS)', 'Yaqub (AS)', 'Yunus (AS)', 'Musa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'أيوب عليه السلام هو الذي دعا بهذا الدعاء.',
+            explanationEn: 'Ayoub (AS) is the one who made this supplication.'
+        },
+        {
+            id: 66,
+            question: 'من هو النبي الذي دعا ربه "لا تذرني فرداً"؟',
+            questionEn: 'Which Prophet prayed "Do not leave me alone (childless)"?',
+            options: ['زكريا عليه السلام', 'إبراهيم عليه السلام', 'نوح عليه السلام', 'موسى عليه السلام'],
+            optionsEn: ['Zakariya (AS)', 'Ibrahim (AS)', 'Nuh (AS)', 'Musa (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'زكريا عليه السلام دعا ربه ليرزقه ولداً.',
+            explanationEn: 'Zakariya (AS) prayed to his Lord to grant him a child.'
+        },
+        {
+            id: 67,
+            question: 'من هو النبي الذي قال "إنما أشكو بثي وحزني إلى الله"؟',
+            questionEn: 'Which Prophet said "I only complain of my suffering and my grief to Allah"?',
+            options: ['يعقوب عليه السلام', 'يوسف عليه السلام', 'أيوب عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Yaqub (AS)', 'Yusuf (AS)', 'Ayoub (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'يعقوب عليه السلام قال ذلك حزناً على يوسف.',
+            explanationEn: 'Yaqub (AS) said this in his grief over Yusuf.'
+        },
+        {
+            id: 68,
+            question: 'من هو النبي الذي قال "يا أبت افعل ما تؤمر"؟',
+            questionEn: 'Which Prophet said "O my father, do as you are commanded"?',
+            options: ['إسماعيل عليه السلام', 'إسحاق عليه السلام', 'يحيى عليه السلام', 'يوسف عليه السلام'],
+            optionsEn: ['Ismail (AS)', 'Ishaq (AS)', 'Yahya (AS)', 'Yusuf (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'إسماعيل عليه السلام قال ذلك لأبيه إبراهيم عند الذبح.',
+            explanationEn: 'Ismail (AS) said this to his father Ibrahim at the time of sacrifice.'
+        },
+        {
+            id: 69,
+            question: 'من هو النبي الذي قال "رب السجن أحب إلي مما يدعونني إليه"؟',
+            questionEn: 'Which Prophet said "My Lord, prison is more beloved to me than that to which they invite me"?',
+            options: ['يوسف عليه السلام', 'موسى عليه السلام', 'يونس عليه السلام', 'لوط عليه السلام'],
+            optionsEn: ['Yusuf (AS)', 'Musa (AS)', 'Yunus (AS)', 'Lut (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'يوسف عليه السلام فضل السجن على المعصية.',
+            explanationEn: 'Yusuf (AS) preferred prison over sin.'
+        },
+        {
+            id: 70,
+            question: 'من هو النبي الذي قال "لا تحزن إن الله معنا"؟',
+            questionEn: 'Which Prophet said "Do not grieve; indeed Allah is with us"?',
+            options: ['محمد ﷺ', 'موسى عليه السلام', 'إبراهيم عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Muhammad ﷺ', 'Musa (AS)', 'Ibrahim (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'قالها النبي ﷺ لأبي بكر في الغار.',
+            explanationEn: 'The Prophet ﷺ said it to Abu Bakr in the cave.'
+        },
+        {
+            id: 71,
+            question: 'من هو النبي الذي قال "كلا إن معي ربي سيهدين"؟',
+            questionEn: 'Which Prophet said "No! Indeed, with me is my Lord; He will guide me"?',
+            options: ['موسى عليه السلام', 'محمد ﷺ', 'إبراهيم عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Musa (AS)', 'Muhammad ﷺ', 'Ibrahim (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'قالها موسى عليه السلام عندما حاصره فرعون والبحر أمامه.',
+            explanationEn: 'Musa (AS) said it when Pharaoh trapped him with the sea in front.'
+        },
+        {
+            id: 72,
+            question: 'من هو النبي الذي قال "حسبي الله ونعم الوكيل"؟',
+            questionEn: 'Which Prophet said "Sufficient for us is Allah, and [He is] the best Disposer of affairs"?',
+            options: ['إبراهيم عليه السلام', 'محمد ﷺ', 'موسى عليه السلام', 'كل ما سبق'],
+            optionsEn: ['Ibrahim (AS)', 'Muhammad ﷺ', 'Musa (AS)', 'All of the above'],
+            correctAnswer: 3,
+            difficulty: 'hard',
+            explanation: 'قالها إبراهيم حين ألقي في النار، وقالها محمد ﷺ وأصحابه.',
+            explanationEn: 'Ibrahim said it when thrown in fire, and Muhammad ﷺ and his companions said it.'
+        },
+        {
+            id: 73,
+            question: 'من هو النبي الذي قال "سبحانك إني كنت من الظالمين"؟',
+            questionEn: 'Which Prophet said "Exalted are You; indeed, I have been of the wrongdoers"?',
+            options: ['يونس عليه السلام', 'آدم عليه السلام', 'موسى عليه السلام', 'نوح عليه السلام'],
+            optionsEn: ['Yunus (AS)', 'Adam (AS)', 'Musa (AS)', 'Nuh (AS)'],
+            correctAnswer: 0,
+            difficulty: 'easy',
+            explanation: 'دعاء يونس عليه السلام في بطن الحوت.',
+            explanationEn: 'The supplication of Yunus (AS) in the belly of the whale.'
+        },
+        {
+            id: 74,
+            question: 'من هو النبي الذي قال "ربنا ظلمنا أنفسنا"؟',
+            questionEn: 'Which Prophet said "Our Lord, we have wronged ourselves"?',
+            options: ['آدم عليه السلام', 'نوح عليه السلام', 'موسى عليه السلام', 'يونس عليه السلام'],
+            optionsEn: ['Adam (AS)', 'Nuh (AS)', 'Musa (AS)', 'Yunus (AS)'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'دعاء آدم وحواء عليهما السلام بعد الأكل من الشجرة.',
+            explanationEn: 'The supplication of Adam and Hawwa (AS) after eating from the tree.'
+        },
+        {
+            id: 75,
+            question: 'من هو النبي الذي قال "إني ذاهب إلى ربي سيهدين"؟',
+            questionEn: 'Which Prophet said "Indeed, I am going to my Lord; He will guide me"?',
+            options: ['إبراهيم عليه السلام', 'موسى عليه السلام', 'عيسى عليه السلام', 'محمد ﷺ'],
+            optionsEn: ['Ibrahim (AS)', 'Musa (AS)', 'Isa (AS)', 'Muhammad ﷺ'],
+            correctAnswer: 0,
+            difficulty: 'medium',
+            explanation: 'قالها إبراهيم عليه السلام حين اعتزل قومه.',
+            explanationEn: 'Ibrahim (AS) said it when he withdrew from his people.'
+        }
+
+    ]
+};

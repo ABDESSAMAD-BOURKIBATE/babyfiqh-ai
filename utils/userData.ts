@@ -18,6 +18,7 @@ export interface ChildProfile {
     gender: 'boy' | 'girl';
     pin: string;
     stats: ChildStats;
+    activityLog?: ActivityLog[]; // Optional for backward compatibility
     createdAt: string;
 }
 
@@ -26,6 +27,7 @@ export interface ParentData {
     fullName: string;
     email: string;
     password: string; // In a real app, this would be hashed.
+    role: 'father' | 'mother';
     children: ChildProfile[];
 }
 
@@ -57,7 +59,7 @@ export const updateChildStats = (childId: string, message: string, emotion: stri
 
     const parentData: ParentData = JSON.parse(storedData);
     const childIndex = parentData.children.findIndex(c => c.id === childId);
-    
+
     if (childIndex === -1) return;
 
     const child = parentData.children[childIndex];
@@ -66,7 +68,7 @@ export const updateChildStats = (childId: string, message: string, emotion: stri
     // 1. Update Activity
     stats.lastActive = new Date().toISOString();
     stats.totalMessages += 1;
-    
+
     // Logic to increment session: if last active was > 30 mins ago
     // For simplicity, we'll just increment sessions every 10 messages for now, or if it's a new login (handled in App)
     if (stats.totalMessages % 10 === 1) {
@@ -112,4 +114,99 @@ export const updateChildStats = (childId: string, message: string, emotion: stri
     // Save
     parentData.children[childIndex] = child;
     localStorage.setItem('babyfiqh_parent_data', JSON.stringify(parentData));
+};
+
+// --- New Activity Tracking & Advice System ---
+
+export interface ActivityLog {
+    id: string;
+    timestamp: string;
+    type: 'video' | 'game' | 'story' | 'chat' | 'audio' | 'other';
+    title: string;
+    details?: string;
+    durationSeconds?: number;
+    topic?: string;
+}
+
+
+
+export const logChildActivity = (childId: string, activity: Omit<ActivityLog, 'id' | 'timestamp'>) => {
+    const storedData = localStorage.getItem('babyfiqh_parent_data');
+    if (!storedData) return;
+
+    const parentData: ParentData = JSON.parse(storedData);
+    const childIndex = parentData.children.findIndex(c => c.id === childId);
+
+    if (childIndex === -1) return;
+
+    const child = parentData.children[childIndex];
+
+    // Initialize log if it doesn't exist (backward compatibility)
+    if (!child.activityLog) child.activityLog = [];
+
+    const newLog: ActivityLog = {
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        timestamp: new Date().toISOString(),
+        ...activity
+    };
+
+    // Add to beginning of list
+    child.activityLog.unshift(newLog);
+
+    // Keep last 100 activities to prevent storage bloat
+    if (child.activityLog.length > 100) {
+        child.activityLog = child.activityLog.slice(0, 100);
+    }
+
+    parentData.children[childIndex] = child;
+    localStorage.setItem('babyfiqh_parent_data', JSON.stringify(parentData));
+};
+
+export const generateParentalAdvice = (child: ChildProfile, lang: 'ar' | 'en'): string[] => {
+    const advice: string[] = [];
+    const stats = child.stats;
+    const logs = child.activityLog || [];
+
+    // 1. Topic-based Advice
+    if (stats.topicsLearned.includes('الصلاة') || stats.topicsLearned.includes('Prayer')) {
+        advice.push(lang === 'ar'
+            ? "طفلك مهتم بالصلاة مؤخراً. جرب أن تصلي معه جماعة لتشجيعه."
+            : "Your child is interested in Prayer. Try praying together to encourage them.");
+    }
+
+    if (stats.topicsLearned.includes('الأنبياء') || stats.topicsLearned.includes('Prophets')) {
+        advice.push(lang === 'ar'
+            ? "يبدو أن قصص الأنبياء تثير فضول طفلك. اقرأ معه قصة قبل النوم."
+            : "Prophet stories seem to spark your child's curiosity. Read a story together at bedtime.");
+    }
+
+    // 2. Emotion-based Advice
+    if (stats.dominantMood === 'curious') {
+        advice.push(lang === 'ar'
+            ? "طفلك يمر بفترة فضول عالية. هذا وقت ممتاز لتعليمه مهارات جديدة."
+            : "Your child is very curious lately. It's a great time to teach new skills.");
+    } else if (stats.dominantMood === 'anxious') {
+        advice.push(lang === 'ar'
+            ? "قد يشعر طفلك ببعض القلق. خصص وقتاً للحوار الهادئ وطمأنته."
+            : "Your child might be feeling anxious. Dedicate time for quiet talk and reassurance.");
+    }
+
+    // 3. Activity Balance Advice
+    const videoCount = logs.filter(l => l.type === 'video').length;
+    const gameCount = logs.filter(l => l.type === 'game').length;
+
+    if (videoCount > 10 && gameCount < 2) {
+        advice.push(lang === 'ar'
+            ? "طفلك يقضي وقتاً طويلاً في المشاهدة. شجعه على تجربة الألعاب التفاعلية لتنشيط ذهنه."
+            : "Your child spends a lot of time watching. Encourage interactive games to stimulate their mind.");
+    }
+
+    // Default advice if empty
+    if (advice.length === 0) {
+        advice.push(lang === 'ar'
+            ? "تحدث مع طفلك عما تعلمه اليوم في التطبيق لتعزيز التواصل."
+            : "Talk to your child about what they learned in the app today to boost connection.");
+    }
+
+    return advice;
 };
